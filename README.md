@@ -25,7 +25,9 @@
 * 購入した商品の評価を誰かに伝えたい時。
 
 ## 設計書
-
+* 画面遷移図　https://drive.google.com/file/d/1cGWC3ODTHof2im98LdSckoGXCsUW68tG/view?usp=sharing
+* ER図　https://drive.google.com/file/d/1PogVCqEpg4G_d28XtgFh8DTbTeSBy7eU/view?usp=sharing
+* テーブル定義書　https://docs.google.com/spreadsheets/d/1qRthC-4ljB4UXcpaMS8h-Dj_lRR865kqQCLqpyeB2WA/edit?usp=sharing
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
