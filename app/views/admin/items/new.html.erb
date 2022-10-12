@@ -1,0 +1,6 @@
+<h2>商品追加</h2>
+<%= form_with model: @item, url: admin_items_path do %>
+  <%= f.file_field :image, accept: "image/*" %>
+  
+  <%= f.submit '投稿' %>
+<% end %>
