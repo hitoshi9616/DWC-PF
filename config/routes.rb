@@ -5,9 +5,30 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  scope module: :public do
+    root to: 'homes#top'
+    get "home/about" => "homes#about", as: "about"
+    resources :customers
+    resources :items
+    resources :posts
+    resources :post_comments
+    resources :reviews
+    resources :review_comments
+  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
+  namespace :admin do
+    resources :customers
+    resources :genres
+    resources :items
+    resources :posts
+    resources :post_comments
+    resources :reviews
+    resources :review_comments
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
