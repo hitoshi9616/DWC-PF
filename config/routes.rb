@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     resources :customers
     resources :items
-    resources :posts
-    resources :post_comments
-    resources :reviews
-    resources :review_comments
+    resources :posts do
+      resources :post_comments
+    end
+    resources :reviews do
+      resources :review_comments
+    end
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

@@ -1,6 +1,20 @@
-<h2>商品追加</h2>
-<%= form_with model: @item, url: admin_items_path do %>
-  <%= f.file_field :image, accept: "image/*" %>
-  
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container">
+
+  <h2>商品追加</h2>
+  <%= form_with model: @item, url: admin_items_path do %>
+    <%= f.label :"商品画像" %>
+    <%= f.file_field :image, accept: "image/*" %>
+
+    <%= f.label :"商品名" %>
+    <%= f.text_field :name, required: true %>
+
+    <%= f.label :"商品説明" %>
+    <%= f.text_area :introduction, required: true %>
+
+    <%= f.label :"販売価格" %>
+    <%= f.text_field :price, required: true %>
+
+    <%= f.submit '商品登録' %>
+  <% end %>
+
+</div>

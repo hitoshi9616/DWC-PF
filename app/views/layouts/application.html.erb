@@ -11,6 +11,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <heder>
+      <!--ログインしているアカウントによってheaderを変える-->
+      <% if admin_signed_in? %>
+      <!--adminアカウントの時のheader-->
+        <%= render '/layouts/admin' %>
+      <% else %>
+      <!--ログイン前とcustomerでのログイン時-->
+        <%= render '/layouts/customer' %>
+      <% end %>
+    </heder>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer></footer>
+
   </body>
+
 </html>
