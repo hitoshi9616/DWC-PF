@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get "home/about" => "homes#about", as: "about"
+    get "homes/about" => "homes#about", as: "about"
     resources :customers
     resources :items
     resources :posts do
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers
     resources :genres
+    get "item/confirm" => "items#confirm"
     resources :items
     resources :posts
     resources :post_comments
