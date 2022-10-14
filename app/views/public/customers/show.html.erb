@@ -4,8 +4,12 @@
     <%= @customer.nickname %>さんのページ
   </h2>
 
-  <div>
-
-  </div>
+  <% if @customer.id == current_customer.id %>
+    <div>
+      <%= link_to "ニックネーム変更", edit_customer_path %>
+    </div>
+  <% else %>
+    <div></div>
+  <% end %>
 
 </div>

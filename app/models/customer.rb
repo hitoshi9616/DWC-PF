@@ -9,15 +9,15 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
-  validates :nickname, presence: true
-  validates :phone_number, presence: true
-  validates :age, presence: true
-  validates :email, presence: true
-  validates :encrypted_password, presence: true
+  #validates :last_name, presence: true
+  #validates :first_name, presence: true
+  #validates :last_name_kana, presence: true
+  #validates :first_name_kana, presence: true
+  #validates :nickname, presence: true
+  #validates :phone_number, presence: true
+  #validates :age, presence: true
+  #validates :email, presence: true
+  #validates :encrypted_password, presence: true
 
   def self.guest
     find_or_create_by!(last_name: 'guestcustomer' ,email: 'guest@example.com') do |customer|
