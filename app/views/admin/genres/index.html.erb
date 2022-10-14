@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div　class="row">
+    <h2>ジャンル一覧</h2>
+    <h5>
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
+        <%= f.label :"ジャンル登録" %>
+        <%= f.text_field :genre %>
+        <%= f.submit "登録" %>
+      <% end %>
+    </h5>
+
+    <div class="row">
+      <% if @genres.count >= 1 %>
+        <% @genres.each do |genre| %>
+          <div>
+            <%= genre.genre %>
+            <%= link_to "詳細へ", admin_genre_path(genre.id) %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>登録されているジャンルはありません</p>
+      <% end %>
+    </div>
+  </div>
+
+</div>
