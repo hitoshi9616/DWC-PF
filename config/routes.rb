@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers
     resources :genres
-    get "item/confirm" => "items#confirm"
+    get "item/confirm/:id" => "items#confirm", as: "confirm"
     resources :items
     resources :posts
     resources :post_comments
