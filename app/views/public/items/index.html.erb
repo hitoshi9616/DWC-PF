@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="row">
+    <h2>商品一覧</h2>
+  </div>
+
+  <div>
+    <% @items.each do |item| %>
+      <div>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.get_image(100, 100) %>
+          <%= item.name %>
+          <%= item.price %>円
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
