@@ -1,0 +1,37 @@
+<div class="container">
+
+  <h2>会員一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ニックネーム</th>
+        <th>投稿数</th>
+        <th>レビュー数</th>
+      </tr>
+    </thead>
+
+    <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <th>
+            <%= link_to customer_path(customer.id) do %>
+              <%= customer.nickname %>
+            <% end %>
+          </th>
+          <th>
+            <%#= link_to posts_path do %>
+              <%#= customer.post.count %>
+            <%# end %>
+          </th>
+          <th>
+            <%#= link_to customer_reviews_path do %>
+              <%#= customer.review.count %>
+            <%# end %>
+          </th>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+</div>

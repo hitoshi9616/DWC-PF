@@ -14,10 +14,8 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    nickname = Customer.new(customer_params)
     if @customer.id == current_customer.id
-      @customer.nickname = nickname
-      @customer.update
+      @customer.update(customer_params)
       redirect_to customer_path(@customer.id)
     else
       render :edit
