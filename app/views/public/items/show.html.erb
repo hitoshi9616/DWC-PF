@@ -5,17 +5,21 @@
   </div>
 
   <div>
-    <div>
+    <div class="row">
+      <div>
       <%= image_tag @item.get_image(100, 100) %>
-      <%= @item.name %>
-      <%= @item.price %>円
+      </div>
+      <div>
+        <%= @item.name %><br />
+        <%= @item.introduction %><br />
+        <%= @item.price %>円
+      </div>
     </div>
   </div>
 
-  <div>
-    <%= link_to review_path do%>
-      <h4>レビューする</h4>
-    <% end %>
+  <div class="row">
+    <h4>商品レビュー</h4>
+    <%= link_to "レビューする", new_review_path(@item.id) %>
   </div>
 
 </div>

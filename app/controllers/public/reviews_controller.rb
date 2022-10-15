@@ -1,5 +1,9 @@
 class Public::ReviewsController < ApplicationController
 
+  def new
+    @review = Review.new
+  end
+
   def index
     @reviews = Review.all
   end
@@ -38,4 +42,6 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:evaluation, :text)
+  end
+
 end
