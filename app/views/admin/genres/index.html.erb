@@ -4,7 +4,7 @@
     <h2>ジャンル一覧</h2>
     <h5>
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
-        <%= f.label :"ジャンル登録" %>
+        <%= f.label :gemre, "ジャンル登録" %>
         <%= f.text_field :genre %>
         <%= f.submit "登録" %>
       <% end %>

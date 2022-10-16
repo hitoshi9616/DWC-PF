@@ -4,25 +4,25 @@
 
   <%= form_with model: @item, url: admin_items_path do |f| %>
     <div>
-    <%= f.label :"商品画像" %>
+    <%= f.label :image, "商品画像" %>
     <%= f.file_field :image, accept: "image/*", required: true %>
     </div>
-    
+
     <div>
-    <%= f.label :"商品名" %>
+    <%= f.label :name, "商品名" %>
     <%= f.text_field :name, required: true %>
     </div>
-    
+
     <div>
-    <%= f.label :"商品説明" %>
+    <%= f.label :introduction, "商品説明" %>
     <%= f.text_area :introduction, required: true %>
     </div>
-    
+
     <div>
-    <%= f.label :"販売価格" %>
+    <%= f.label :price, "販売価格" %>
     <%= f.text_field :price, required: true %>円
     </div>
-    
+
     <%= f.submit '商品登録' %>
   <% end %>
 

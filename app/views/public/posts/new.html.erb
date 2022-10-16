@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h2>新規投稿</h2>
+
+  <div>
+    <%= form_with model: @post do |f| %>
+      <div>
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title, required: true %>
+      </div>
+      <div>
+        <%= f.label :text, "投稿内容" %>
+        <%= f.text_area :text %>
+      </div>
+      <div>
+        <%= f.label :genre_id, "投稿の種類" %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre) %>
+      </div>
+      <div>
+        <%= f.submit "投稿する" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

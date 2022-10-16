@@ -4,12 +4,25 @@
     <%= @customer.nickname %>さんのページ
   </h2>
 
-  <% if @customer.id == current_customer.id %>
+  <div>
     <div>
-      <%= link_to "ニックネーム変更", edit_customer_path %>
-    </div>
-  <% else %>
-    <div></div>
-  <% end %>
+      <p>
+        投稿数：
+        <%= @posts.count %>
+      </p>
+      <p>
+        レビュー数：<%= @reviews.count %>
+      </p>
+    <% if @customer.id == current_customer.id %>
+      <div>
+        <%= link_to "ニックネーム変更", edit_customer_path %>
+      </div>
+      <div>
+        <%= link_to "投稿画面へ", new_post_path %>
+      </div>
+    <% else %>
+      <div></div>
+    <% end %>
+  </div>
 
 </div>

@@ -6,6 +6,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @posts = Post.all#(@customer.id)
+    @reviews = Review.all
   end
 
   def edit
