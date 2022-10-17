@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h2>投稿詳細</h2>
+
+  <div class="row">
+    <h5>投稿者</h5>
+    <%= link_to admin_customer_path(@post.customer.id) do %>
+      <%= @post.customer.nickname %>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <h5>タイトル</h5>
+    <%= @post.title %>
+  </div>
+
+  <div class="row">
+    <h5>内容</h5>
+    <%= @post.text %>
+  </div>
+
+  <div>
+    <%= link_to "投稿削除", admin_post_confirm_path(@post.id) %>
+  </div>
+
+  <div>
+    <p>
+      コメント件数：<%= @post.post_comments.count %>
+    </p>
+    <% @post.post_comments.each do |post_comment| %>
+      <p><%= post_comment.customer.nickname %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+      <p><%= post_comment.comment %></p>
+      <%#= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+    <% end %>
+  </div>
+
+</div>

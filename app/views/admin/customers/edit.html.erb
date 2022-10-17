@@ -1,0 +1,53 @@
+<div class="container">
+
+  <h2>
+    会員情報編集
+  </h2>
+
+  <div class="row">
+    <p>名前：
+      <%= @customer.last_name %>
+      <%= " " %>
+      <%= @customer.first_name %>
+    </p>
+  </div>
+  <div class="row">
+    <p>フリガナ：
+      <%= @customer.last_name_kana %>
+      <%= " " %>
+      <%= @customer.first_name_kana %>
+    </p>
+  </div>
+  <div class="row">
+    <p>ニックネーム：
+      <%= @customer.nickname %>
+    </p>
+  </div>
+  <div class="row">
+    <p>電話番号：
+      <%= @customer.phone_number %>
+    </p>
+  </div>
+  <div class="row">
+    <p>
+      年齢：
+      <%= @customer.age %>
+    </p>
+  </div>
+  <div class="row">
+    <p>
+      投稿数：
+      <%= @customer.posts.count %>
+    </p>
+  </div>
+  <div class="row">
+    <p>
+      レビュー数：<%= @customer.reviews.count %>
+    </p>
+  </div>
+
+  <div>
+    <%#= %>
+  </div>
+
+</div>

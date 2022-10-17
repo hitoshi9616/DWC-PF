@@ -18,12 +18,12 @@
           <tr>
             <td><%= post.genre.genre %></td>
             <td>
-              <%= link_to post_path(post.id) do %>
+              <%= link_to admin_post_path(post.id) do %>
                 <%= post.title %>
               <% end %>
             </td>
             <td>
-              <%= link_to customer_path(post.customer_id) do %>
+              <%= link_to admin_customer_path(post.customer_id) do %>
                 <%= post.customer.nickname %>
               <% end %>
             </td>

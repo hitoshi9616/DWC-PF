@@ -15,8 +15,11 @@
     <%= link_to "レビュー一覧", reviews_path, class:"btn btn-light" %>
   </li>
 
-  <%# 会員がログインしているか表示を切り替える %>
+  <%# 会員がログインしているかで表示を切り替える %>
   <% if customer_signed_in? %>
+    <li>
+      <%= link_to "マイページ", customer_path(current_customer.id), class:"btn btn-light" %>
+    </li>
     <li>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-light" %>
     </li>
