@@ -8,10 +8,10 @@
     <div>
       <p>
         投稿数：
-        <%= @posts.count %>
+        <%= @customer.posts.count %>
       </p>
       <p>
-        レビュー数：<%= @reviews.count %>
+        レビュー数：<%= @customer.reviews.count %>
       </p>
     <% if @customer.id == current_customer.id %>
       <div>

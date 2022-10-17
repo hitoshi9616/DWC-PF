@@ -20,14 +20,14 @@
             <% end %>
           </th>
           <th>
-            <%#= link_to posts_path do %>
-              <%#= customer.post.count %>
-            <%# end %>
+            <%= link_to posts_path do %>
+              <%= customer.posts.count %>
+            <% end %>
           </th>
           <th>
-            <%#= link_to customer_reviews_path do %>
-              <%#= customer.review.count %>
-            <%# end %>
+            <%= link_to reviews_path do %>
+              <%= customer.reviews.count %>
+            <% end %>
           </th>
         </tr>
       </tbody>
