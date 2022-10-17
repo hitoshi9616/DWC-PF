@@ -9,6 +9,7 @@
           <th>投稿の種類</th>
           <th>タイトル</th>
           <th>投稿者</th>
+          <th>コメント数</th>
         </tr>
       </thead>
 
@@ -26,6 +27,7 @@
                 <%= post.customer.nickname %>
               <% end %>
             </td>
+            <td><%= post.post_comments.count %></td>
           </tr>
         <% end %>
       </tbody>

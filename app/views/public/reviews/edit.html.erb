@@ -1,0 +1,29 @@
+<div class="container">
+
+  <%= form_with model: @review do |f| %>
+    <div>
+      <%= f.label :evaluation, "評価" %>
+      <%= f.hidden_field :evaluation, id: :review_star %>
+  　</div>
+    <%# ★で評価するための記述 %>
+    <script>
+  　$('#star').empty();
+    $('#star').raty({
+      size : 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'review[evaluation]',
+      half: false,
+    });
+    </script>
+
+    <div>
+      <%= f.label :"レビュー内容" %><br />
+      <%= f.text_area :text %>
+    </div>
+    <div>
+      <%= f.submit "編集完了" %>
+    </div>
+  <% end %>
+
+</div>

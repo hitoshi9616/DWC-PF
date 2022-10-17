@@ -5,14 +5,14 @@
       <%= f.label :evaluation, "評価" %>
       <%= f.hidden_field :evaluation, id: :review_star %>
   　</div>
-
+    <%# ★で評価するための記述 %>
     <script>
   　$('#star').empty();
     $('#star').raty({
       size : 36,
       starOff: '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
-        scoreName: 'review[evaluation]',
+      scoreName: 'review[evaluation]',
       half: false,
     });
     </script>
