@@ -14,12 +14,12 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_customer.id
+    @review.customer_id = current_customer.id
     #@review.item_id = item.id
     if @review.save
       redirect_to review_path(@review.id)
     else
-      render item_path(item.id)
+      redirect_back(fallback_location: root_path)
     end
   end
 

@@ -19,7 +19,8 @@
 
   <div class="row">
     <h4>商品レビュー</h4>
-    <%= link_to "レビューする", new_review_path(@item.id) %>
+    <%= render 'public/reviews/new', review: @review %>
+    <%#= link_to "レビューする", new_review_path(@item.id) %>
   </div>
 
 </div>
