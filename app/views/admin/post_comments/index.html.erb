@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h2>投稿コメント一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>コメント先</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @post_comments.each do |comment| %>
+        <tr>
+          <td><%= comment.customer.nickname %></td>
+          <td><%= comment.post.title %></td>
+          <td><%= comment.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

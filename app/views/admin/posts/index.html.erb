@@ -1,6 +1,9 @@
 <div class="container">
 
-  <h2>投稿一覧</h2>
+  <div class="row">
+    <h2>投稿一覧</h2>
+    <p class="ml-3"><%= link_to "コメント一覧へ", admin_post_comments_path %></p>
+  </div>
 
   <% if @posts.count >= 1 %>
     <table class="table">

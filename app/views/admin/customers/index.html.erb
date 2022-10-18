@@ -8,27 +8,33 @@
         <th>ニックネーム</th>
         <th>投稿数</th>
         <th>レビュー数</th>
+        <th>会員ステータス</th>
       </tr>
     </thead>
 
     <% @customers.each do |customer| %>
       <tbody>
         <tr>
-          <th>
+          <td>
             <%= link_to admin_customer_path(customer.id) do %>
               <%= customer.nickname %>
             <% end %>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to admin_posts_path do %>
               <%= customer.posts.count %>
             <% end %>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to admin_reviews_path do %>
               <%= customer.reviews.count %>
             <% end %>
-          </th>
+          </td>
+          <% if customer.is_deleted == false %>
+            <td>有効</td>
+          <% else %>
+            <td>退会</td>
+          <% end %>
         </tr>
       </tbody>
     <% end %>

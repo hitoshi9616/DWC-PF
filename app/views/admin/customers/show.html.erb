@@ -46,7 +46,18 @@
     </p>
   </div>
 
-  <div>
+  <div class="row">
+    <p>
+      ステータス：
+      <% if @customer.is_deleted == false %>
+        有効
+      <% else %>
+        無効
+      <% end %>
+    </p>
+  </div>
+
+  <div class="row">
     <%= link_to "情報の編集", edit_admin_customer_path(@customer.id) %>
   </div>
 

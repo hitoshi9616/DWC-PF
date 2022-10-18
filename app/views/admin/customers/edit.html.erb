@@ -1,53 +1,92 @@
 <div class="container">
 
+  <%= if @customer.errors.any? %>
+    <div>
+      <%= @customer.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <h2>
     会員情報編集
   </h2>
 
-  <div class="row">
-    <p>名前：
-      <%= @customer.last_name %>
-      <%= " " %>
-      <%= @customer.first_name %>
-    </p>
-  </div>
-  <div class="row">
-    <p>フリガナ：
-      <%= @customer.last_name_kana %>
-      <%= " " %>
-      <%= @customer.first_name_kana %>
-    </p>
-  </div>
-  <div class="row">
-    <p>ニックネーム：
-      <%= @customer.nickname %>
-    </p>
-  </div>
-  <div class="row">
-    <p>電話番号：
-      <%= @customer.phone_number %>
-    </p>
-  </div>
-  <div class="row">
-    <p>
-      年齢：
-      <%= @customer.age %>
-    </p>
-  </div>
-  <div class="row">
-    <p>
-      投稿数：
-      <%= @customer.posts.count %>
-    </p>
-  </div>
-  <div class="row">
-    <p>
-      レビュー数：<%= @customer.reviews.count %>
-    </p>
-  </div>
+  <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
 
-  <div>
-    <%#= %>
-  </div>
+    <div class="row">
+      <p>名前：
+        <%= @customer.last_name %>
+        <%= " " %>
+        <%= @customer.first_name %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>フリガナ：
+        <%= @customer.last_name_kana %>
+        <%= " " %>
+        <%= @customer.first_name_kana %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>ニックネーム：
+        <%= @customer.nickname %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>電話番号：
+        <%= @customer.phone_number %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        年齢：
+        <%= @customer.age %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        メールアドレス：
+        <%= @customer.email %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        投稿数：
+        <%= @customer.posts.count %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        レビュー数：<%= @customer.reviews.count %>
+      </p>
+    </div>
+
+    <div class="row">
+      <%= f.label :"会員ステータス：" %>
+      <div class="form-check">
+        <%= f.radio_button :is_deleted, false, required: true, class:"form-check-input" %>
+        <%= f.label :is_deleted, "有効" %>
+      </div>
+      <div class="form-check ml-2">
+        <%= f.radio_button :is_deleted, true, required: true, class:"form-check-input" %>
+        <%= f.label :is_deleted, "無効" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.submit "編集完了" %>
+    </div>
+  <% end %>
 
 </div>
