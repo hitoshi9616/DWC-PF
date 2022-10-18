@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
-    #@review.item_id = item.id
+    @review.item_id = item.id
     if @review.save
       redirect_to review_path(@review.id)
     else

@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     get "homes/about" => "homes#about", as: "about"
     resources :customers
     resources :items
+      resources :reviews do
+        resources :review_comments
+      end
     resources :posts do
       resources :post_comments
-    end
-    resources :reviews do
-      resources :review_comments
     end
   end
 
