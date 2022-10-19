@@ -8,15 +8,16 @@ Rails.application.routes.draw do
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
-  
+
   scope module: :public do
     root to: 'homes#top'
     get "homes/about" => "homes#about", as: "about"
     resources :customers
     resources :items
-      resources :reviews do
-        resources :review_comments
-      end
+    #itemsに対してreviewsをネストしないのはレビュー一覧で全てのレビュー情報を表示するため
+    resources :reviews do
+      resources :review_comments
+    end
     resources :posts do
       resources :post_comments
     end

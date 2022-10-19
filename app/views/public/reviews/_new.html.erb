@@ -19,12 +19,22 @@
     </div>
 
     <div>
+      <%= f.label :"レビュータイトル" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
       <%= f.label :"レビュー内容" %><br />
       <%= f.text_area :text %>
     </div>
+
+    <%# どの商品に対してのレビューか分かるように紐づけるため %>
+    <%= f.hidden_field :item_id, :value => item.id %>
+
     <div>
       <%= f.submit "レビュー投稿" %>
     </div>
+
   <% end %>
 
 </div>

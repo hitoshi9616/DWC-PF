@@ -15,7 +15,6 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
-    @review.item_id = item.id
     if @review.save
       redirect_to review_path(@review.id)
     else
@@ -41,7 +40,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:evaluation, :text, :evaluation)
+    params.require(:review).permit(:evaluation, :title, :text, :evaluation, :item_id)
   end
 
 end

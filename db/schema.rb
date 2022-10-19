@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_071418) do
     t.integer "customer_id"
     t.integer "item_id"
     t.integer "evaluation"
+    t.string "title"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

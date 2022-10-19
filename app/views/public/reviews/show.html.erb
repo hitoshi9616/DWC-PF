@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h2>レビュー詳細</h2>
+
+  <div>
+    <h5>レビュー商品情報</h5>
+
+    <div>
+      <%= image_tag @review.item.get_image(100, 100) %>
+    </div>
+
+    <div>
+      <%= @review.item.name %><br />
+      <%= @review.item.introduction %><br />
+      <%= @review.item.price %>
+    </div>
+  </div>
+
+  <div>
+    <div class="row">
+      <p>
+        <%= @review.title %>
+      </p>
+      <p class="ml-5">評価</p>
+      <%= @review.evaluation %>
+      <p class="ml-3">
+        コメント数：<%#= @review.review_comments.comment %>
+      </p>
+    </div>
+
+    <div class="row">
+      <%= @review.text %>
+    </div>
+  </div>
+
+</div>

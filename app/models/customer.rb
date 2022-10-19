@@ -20,7 +20,7 @@ class Customer < ApplicationRecord
   #validates :encrypted_password, presence: true
 
   def self.guest
-    find_or_create_by!(last_name: 'guestcustomer' ,email: 'guest@example.com') do |customer|
+    find_or_create_by!(nickname: 'ゲスト' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
     end
   end
