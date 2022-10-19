@@ -22,7 +22,19 @@
         <%= @review.title %>
       </p>
       <p class="ml-5">評価</p>
-      <%= @review.evaluation %>
+      <%# ★で評価するための記述 %>
+      <div id="star"></div>
+      <script>
+        $('#star').empty();
+        $('#star').raty({
+          size: 32,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          half: false,
+          readOnly: true,
+          score:<%= @review.evaluation %>
+        });
+      </script>
       <p class="ml-3">
         コメント数：<%#= @review.review_comments.comment %>
       </p>

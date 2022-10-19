@@ -4,8 +4,8 @@
     <div class="row">
       <%= f.label :evaluation, "評価" %>
       <%= f.hidden_field :evaluation, id: :review_star %>
-      <div id="star"></div>
       <%# ★で評価するための記述 %>
+      <div id="star"></div>
       <script>
       $('#star').empty();
       $('#star').raty({
@@ -28,7 +28,7 @@
       <%= f.text_area :text %>
     </div>
 
-    <%# どの商品に対してのレビューか分かるように紐づけるため %>
+    <%# どの商品に対してのレビューか分かるように紐づける %>
     <%= f.hidden_field :item_id, :value => item.id %>
 
     <div>
