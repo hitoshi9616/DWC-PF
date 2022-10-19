@@ -6,10 +6,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th>商品画像</th>
-          <th>商品名</th>
-          <th>評価</th>
           <th>タイトル</th>
+          <th>評価</th>
+          <th>商品</th>
           <th>投稿者</th>
           <th>コメント数</th>
         </tr>
@@ -19,13 +18,8 @@
         <% @reviews.each do |review| %>
           <tr>
             <td>
-              <%= link_to item_path(review.item_id) do %>
-                <%= image_tag review.item.get_image(50, 50) %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to item_path(review.item_id) do %>
-                <%= review.item.name %>
+              <%= link_to review_path(review.id) do %>
+                <%= review.title %>
               <% end %>
             </td>
             <td>
@@ -44,8 +38,9 @@
               </script>
             </td>
             <td>
-              <%= link_to review_path(review.id) do %>
-                <%= review.title %>
+              <%= link_to item_path(review.item_id) do %>
+                <%= image_tag review.item.get_image(50, 50) %>
+                <%= review.item.name %>
               <% end %>
             </td>
             <td>
