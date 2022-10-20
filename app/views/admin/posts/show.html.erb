@@ -27,6 +27,7 @@
     <p>
       コメント件数：<%= @post.post_comments.count %>
     </p>
+    <%# 投稿に対するコメントを全て表示する %>
     <% @post.post_comments.each do |post_comment| %>
       <p><%= post_comment.customer.nickname %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %></p>

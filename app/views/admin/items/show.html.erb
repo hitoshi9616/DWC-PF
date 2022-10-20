@@ -2,16 +2,38 @@
 
   <h2>商品詳細</h2>
 
-  <div>
-    <%= image_tag @item.get_image(100, 100) %>
-    <%= @item.name %>
-    <%= @item.price %>円
+  <div class="row col-xl-5">
+    <%= image_tag @item.get_image(200, 200) %>
+    <div>
+      <%= @item.name %><br />
+      <%= @item.price %>円
+    </div>
   </div>
 
-  <div>
-    <%= link_to "商品編集", edit_admin_item_path(@item.id) %>
-    |
-    <%= link_to "商品削除", admin_item_confirm_path(@item.id) %>
+  <div class="row mt-2">
+    <%= link_to "商品編集", edit_admin_item_path(@item.id), class:"mr-2" %>
+    <%= "|" %>
+    <%= link_to "商品削除", admin_item_confirm_path(@item.id), class:"ml-2" %>
   </div>
+
+  <!--<div>-->
+  <!--  <%# @reviews.each do |review| %>-->
+  <!--    <td>-->
+        <%# ★で評価するための記述 %>
+  <!--      <div id="star<%#= review %>"></div>-->
+  <!--      <script>-->
+  <!--        $('#star<%#= review %>').empty();-->
+  <!--        $('#star<%#= review %>').raty({-->
+  <!--          size: 36,-->
+  <!--          starOff: '<%#= asset_path('star-off.png') %>',-->
+  <!--          starOn: '<%#= asset_path('star-on.png') %>',-->
+  <!--          half: false,-->
+  <!--          readOnly: true,-->
+  <!--          score:<%#= review.evaluation %>-->
+  <!--        });-->
+  <!--      </script>-->
+  <!--    </td>-->
+  <!--  <%# end %>-->
+  <!--</div>-->
 
 </div>

@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(item.id)
     else
       @item = Item.new
-      render :new
+      render new_admin_item_path
     end
   end
 
@@ -32,7 +32,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(item.id)
     else
       @item = Item.find(params[:id])
-      render :edit
+      render edit_admin_item_path
     end
   end
 
