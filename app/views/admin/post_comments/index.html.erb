@@ -2,24 +2,30 @@
 
   <h2>投稿コメント一覧</h2>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>投稿者</th>
-        <th>コメント先</th>
-        <th>内容</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @post_comments.each do |comment| %>
+  <% if @post_comments.count >= 1 %>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= comment.customer.nickname %></td>
-          <td><%= comment.post.title %></td>
-          <td><%= comment.comment %></td>
+          <th>投稿者</th>
+          <th>コメント先</th>
+          <th>内容</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @post_comments.each do |comment| %>
+          <tr>
+            <td><%= comment.customer.nickname %></td>
+            <td><%= comment.post.title %></td>
+            <td><%= comment.comment %></td>
+            <td><%#= link_to "コメント削除", url: admin_post_comment_path(comment.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h5>コメントがありません</h5>
+  <% end %>
 
 </div>

@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="row">
+    <h5>投稿者</h5>
+    <%= @review.customer.nickname %>
+  </div>
+
+  <div class="row">
+    <h5>タイトル</h5>
+    <%= @review.title %>
+  </div>
+
+  <div class="row">
+    <h5>内容</h5>
+    <%= @review.text %>
+  </div>
+
+  <div>
+    <p>
+      コメント数：<%= @review.review_comments.count %>
+    </p>
+  </div>
+
+  <p>
+    この投稿に関する情報が完全に消去されます<br />
+    本当に削除してもよろしいですか？
+  </p>
+
+  <div>
+    <%= link_to "削除する", admin_review_path(@review.id), method: :delete %>
+  </div>
+
+</div>

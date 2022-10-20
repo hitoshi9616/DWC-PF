@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get "post/confirm/:id" => "posts#confirm", as: "post/confirm"
     resources :posts
     resources :post_comments
+    get "review/confirm/:id" => "reviews#confirm", as: "review/confirm"
     resources :reviews
     resources :review_comments
   end

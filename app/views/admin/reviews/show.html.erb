@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h2>レビュー詳細</h2>
+
+  <div class="row">
+    <h5>投稿者</h5>
+    <%= link_to admin_customer_path(@review.customer.id) do %>
+      <%= @review.customer.nickname %>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <h5>タイトル</h5>
+    <%= @review.title %>
+  </div>
+
+  <div class="row">
+    <h5>内容</h5>
+    <%= @review.text %>
+  </div>
+
+  <div>
+    <%= link_to "投稿削除", admin_review_confirm_path(@review.id) %>
+  </div>
+
+  <div>
+    <p>
+      コメント件数：<%= @review.review_comments.count %>
+    </p>
+    <% @review.review_comments.each do |review_comment| %>
+      <p><%= review_comment.customer.nickname %>
+      <%= review_comment.created_at.strftime('%Y/%m/%d') %></p>
+      <p><%= review_comment.comment %></p>
+      <%#= link_to "コメント削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
+    <% end %>
+  </div>
+
+</div>
