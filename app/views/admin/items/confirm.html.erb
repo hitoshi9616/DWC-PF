@@ -1,18 +1,34 @@
 <div class="container">
 
-  <div>
-    <%= image_tag @item.get_image(100, 100) %>
-    <%= @item.name %>
-    <%= @item.price %>円
+  <h2 style="color: red;" class="row justify-content-center">
+    <strong>商品削除確認</strong>
+  </h2>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <%= image_tag @item.get_image(300, 300) %>
+    </div>
+    <div class="col-lg-8">
+      <div class="row">
+        商品名：<%= @item.name %>
+      </div>
+      <div class="row mt-1">
+        価格　：<%= @item.price %>円
+      </div>
+      <div class="row mt-1">
+        <div class="col-lg3">紹介文：</div>
+        <div class="col-lg-9"><%= @item.introduction %></div>
+      </div>
+    </div>
   </div>
 
-  <p>
+  <strong class="row justify-content-center">
     この商品に関する情報が完全に消去されます<br />
     本当に削除してもよろしいですか？
-  </p>
+  </strong>
 
-  <div>
-    <%= link_to "削除する", admin_item_path(@item.id), method: :delete %>
+  <div class="row justify-content-center mt-2">
+    <%= link_to "削除する", admin_item_path(@item.id), method: :delete, class:"btn btn-danger" %>
   </div>
 
 </div>
