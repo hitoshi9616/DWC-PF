@@ -1,35 +1,25 @@
-<div class="container col-lg-12">
+<ul class="navbar-nav col-lg-12">
+  <li class="nav-item m-auto">
+    <%= link_to "商品一覧", admin_items_path, class:"btn btn-secondary" %>
+  </li>
 
-  <div class="row col-lg-12">
-    <div class="col-lg-3">
-      <%= image_tag('logo.png') %>
-    </div>
+  <li class="nav-item m-auto">
+    <%= link_to "会員一覧", admin_customers_path, class:"btn btn-secondary" %>
+  </li>
 
-    <ul class="row col-lg-9">
-      <li>
-        <%= link_to "商品一覧", admin_items_path, class:"btn btn-light" %>
-      </li>
+  <li class="nav-item m-auto">
+    <%= link_to "投稿一覧", admin_posts_path, class:"btn btn-secondary" %>
+  </li>
 
-      <li>
-        <%= link_to "会員一覧", admin_customers_path, class:"btn btn-light" %>
-      </li>
+  <li class="nav-item m-auto">
+    <%= link_to "レビュー一覧", admin_reviews_path, class:"btn btn-secondary" %>
+  </li>
 
-      <li>
-        <%= link_to "投稿一覧", admin_posts_path, class:"btn btn-light" %>
-      </li>
+  <li class="nav-item m-auto">
+    <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-secondary" %>
+  </li>
 
-      <li>
-        <%= link_to "レビュー一覧", admin_reviews_path, class:"btn btn-light" %>
-      </li>
-
-      <li>
-        <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
-      </li>
-
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
-      </li>
-    </ul>
-  </div>
-
-</div>
+  <li class="nav-item m-auto">
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-secondary" %>
+  </li>
+</ul>

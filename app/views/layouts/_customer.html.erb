@@ -1,41 +1,31 @@
-<div class="container">
+<ul class="navbar-nav col-lg-12">
+  <li class="nav-item m-auto">
+    <%= link_to "商品一覧", items_path, class:"navi-link text-dark" %>
+  </li>
 
-  <div class="row">
-    <div>
-      <%= image_tag('logo.png') %>
-    </div>
+  <li class="nav-item m-auto">
+    <%= link_to "会員一覧", customers_path, class:"navi-link text-dark" %>
+  </li>
 
-    <ul>
-      <li>
-        <%= link_to "商品一覧", items_path, class:"btn btn-light" %>
-      </li>
+  <li class="nav-item m-auto">
+    <%= link_to "投稿一覧", posts_path, class:"navi-link text-dark" %>
+  </li>
 
-      <li>
-        <%= link_to "会員一覧", customers_path, class:"btn btn-light" %>
-      </li>
+  <li class="nav-item m-auto">
+    <%= link_to "レビュー一覧", reviews_path, class:"navi-link text-dark" %>
+  </li>
 
-      <li>
-        <%= link_to "投稿一覧", posts_path, class:"btn btn-light" %>
-      </li>
-
-      <li>
-        <%= link_to "レビュー一覧", reviews_path, class:"btn btn-light" %>
-      </li>
-
-      <%# 会員がログインしているかで表示を切り替える %>
-      <% if customer_signed_in? %>
-        <li>
-          <%= link_to "マイページ", customer_path(current_customer.id), class:"btn btn-light" %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-light" %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "ログイン", customer_session_path, class:"btn btn-light" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-</div>
+  <%# 会員がログインしているかで表示を切り替える %>
+  <% if customer_signed_in? %>
+    <li class="nav-item m-auto">
+      <%= link_to "マイページ", customer_path(current_customer.id), class:"navi-link text-dark" %>
+    </li>
+    <li class="nav-item m-auto">
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"navi-link text-dark" %>
+    </li>
+  <% else %>
+    <li class="nav-item m-auto">
+      <%= link_to "ログイン", customer_session_path, class:"navi-link text-dark" %>
+    </li>
+  <% end %>
+</ul>

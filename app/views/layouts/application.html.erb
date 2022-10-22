@@ -11,14 +11,29 @@
 
   <body>
     <heder>
-      <!--ログインしているアカウントによってheaderを変える-->
-      <% if admin_signed_in? %>
-      <!--adminアカウントの時のheader-->
-        <%= render '/layouts/admin' %>
-      <% else %>
-      <!--ログイン前とcustomerでのログイン時-->
-        <%= render '/layouts/customer' %>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container col-lg-12">
+          <div class="row col-lg-12">
+            <a class="navbar-brand p-3" href="/">
+              <%= image_tag('logo.png') %>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <!--ログインしているアカウントによってheaderを変える-->
+              <% if admin_signed_in? %>
+              <!--adminアカウントログイン時のheader-->
+                <%= render '/layouts/admin' %>
+              <% else %>
+              <!--ログイン前とcustomerアカウントでのログイン時-->
+                <%= render '/layouts/customer' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
     </heder>
 
     <main>
@@ -26,7 +41,6 @@
     </main>
 
     <footer></footer>
-
   </body>
 
 </html>

@@ -6,8 +6,15 @@
     <div class="col-lg-5">
       <%= image_tag @item.get_image(200, 200) %>
       <div class="mt-2">
-        <%= @item.name %>
-        <%= @item.price %>円
+        <div>
+          <%= @item.name %>
+        </div>
+        <div class="mt-2">
+          <%= @item.price %>円
+        </div>
+        <div class="mt-2">
+          <%= @item.introduction %>
+        </div>
       </div>
     </div>
 

@@ -1,8 +1,8 @@
 <div class="container">
 
   <div class="row">
-    <h2>レビュー一覧</h2>
-    <p class="ml-3"><%= link_to "レビューコメント一覧へ", admin_review_comments_path %></p>
+    <h2 class="col-lg-5">レビュー一覧</h2>
+    <p class="col-lg-5 ml-3"><%= link_to "レビューコメント一覧へ", admin_review_comments_path, class:"btn btn-info" %></p>
   </div>
 
   <% if @reviews.count >= 1 %>
