@@ -6,6 +6,8 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @review = Review.find_by(customer_id: @customer.id)
+    @post = Post.find_by(customer_id: @customer.id)
   end
 
   def edit

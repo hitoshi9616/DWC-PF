@@ -1,31 +1,31 @@
-<ul class="navbar-nav col-lg-12">
-  <li class="nav-item m-auto">
-    <%= link_to "商品一覧", items_path, class:"navi-link text-dark" %>
+<ul class="navbar-nav m-auto">
+  <li class="nav-item text-right pl-2 pt-2">
+    <%= link_to "商品一覧", items_path, class:"btn btn-warning" %>
   </li>
 
-  <li class="nav-item m-auto">
-    <%= link_to "会員一覧", customers_path, class:"navi-link text-dark" %>
+  <li class="nav-item text-right pl-2 pt-2">
+    <%= link_to "会員一覧", customers_path, class:"btn btn-warning" %>
   </li>
 
-  <li class="nav-item m-auto">
-    <%= link_to "投稿一覧", posts_path, class:"navi-link text-dark" %>
+  <li class="nav-item text-right pl-2 pt-2">
+    <%= link_to "投稿一覧", posts_path, class:"btn btn-warning" %>
   </li>
 
-  <li class="nav-item m-auto">
-    <%= link_to "レビュー一覧", reviews_path, class:"navi-link text-dark" %>
+  <li class="nav-item text-right pl-2 pt-2">
+    <%= link_to "レビュー一覧", reviews_path, class:"btn btn-warning" %>
   </li>
 
   <%# 会員がログインしているかで表示を切り替える %>
   <% if customer_signed_in? %>
-    <li class="nav-item m-auto">
-      <%= link_to "マイページ", customer_path(current_customer.id), class:"navi-link text-dark" %>
+    <li class="nav-item text-right pl-2 pt-2">
+      <%= link_to "マイページ", customer_path(current_customer.id), class:"btn btn-warning" %>
     </li>
-    <li class="nav-item m-auto">
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"navi-link text-dark" %>
+    <li class="nav-item text-right pl-2 pt-2">
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-warning" %>
     </li>
   <% else %>
-    <li class="nav-item m-auto">
-      <%= link_to "ログイン", customer_session_path, class:"navi-link text-dark" %>
+    <li class="nav-item text-right pl-2 pt-2">
+      <%= link_to "ログイン", customer_session_path, class:"btn btn-warning" %>
     </li>
   <% end %>
 </ul>
