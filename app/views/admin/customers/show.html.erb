@@ -83,29 +83,67 @@
       </div>
 
       <div class="row col-lg-12">
-        <%= link_to "情報の編集", edit_admin_customer_path(@customer.id), class:"btn btn-success mx-auto" %>
+        <%= link_to "情報の確認 / 編集", edit_admin_customer_path(@customer.id), class:"btn btn-primary mx-auto" %>
       </div>
     </div>
 
     <div class="row col-lg-6 offset-1">
-
       <%# 会員の最新投稿 %>
-      <h5　class="col-lg-12">最新の投稿</h5>
-      <div class="row col-lg-12 border border-dark p-2">
-        <% if @post != nil %>
-          <div>
-            <%= @post.title %>
-          </div>
-          <div>
-            <%= @post.text %>
-          </div>
-        <% else %>
-          <h5>投稿はありません</h5>
-        <% end %>
+      <div>
+        <h5 class="col border-bottom">最新の投稿</h5>
+
+        <div class="col p-2">
+          <% if @post != nil %>
+            <div>
+              <strong><%= @post.title %></strong>
+            </div>
+
+            <div class="border border-dark rounded mt-2">
+              <%= @post.text %>
+            </div>
+          <% else %>
+            <h5>投稿はありません</h5>
+          <% end %>
+        </div>
       </div>
       <%# 会員の最新レビュー %>
-      <div class="row"></div>
+      <div>
+        <h5 class="col border-bottom">最新のレビュー</h5>
+
+        <div class="col p-2">
+          <% if @review != nil %>
+            <div class="col">
+              <strong><%= @review.title %></strong>
+            </div>
+
+            <div class="col mt-1">
+              商品名：<%= @review.item.name %></p>
+            </div>
+
+            <%# ★で評価するための記述 %>
+            <div class="col" id="star<%= @review.id %>"></div>
+              <script>
+                $('#star<%= @review.id %>').empty();
+                $('#star<%= @review.id %>').raty({
+                  size: 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  half: false,
+                  readOnly: true,
+                  score:<%= @review.evaluation %>
+                });
+              </script>
+
+            <div class="border border-dark rounded mt-2">
+              <%= @review.text %>
+            </div>
+          <% else %>
+            <h5>レビューはありません</h5>
+          <% end %>
+        </div>
+      </div>
     </div>
+
   </div>
 
 </div>

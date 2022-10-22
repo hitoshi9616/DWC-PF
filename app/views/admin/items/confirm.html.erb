@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h2 style="color: red;" class="row justify-content-center">
+  <h2 style="color: red;" class="row justify-content-center mt-3">
     <strong>商品削除確認</strong>
   </h2>
 
@@ -10,14 +10,14 @@
     </div>
     <div class="col-lg-8">
       <div class="row">
-        商品名：<%= @item.name %>
+        <strong>商品名：<%= @item.name %></strong>
       </div>
       <div class="row mt-1">
         価格　：<%= @item.price %>円
       </div>
       <div class="row mt-1">
-        <div class="col-lg3">紹介文：</div>
-        <div class="col-lg-9"><%= @item.introduction %></div>
+        <div class="col-lg-3">紹介文：</div>
+        <div class="col-lg-9 border border-dark rounded"><%= @item.introduction %></div>
       </div>
     </div>
   </div>
