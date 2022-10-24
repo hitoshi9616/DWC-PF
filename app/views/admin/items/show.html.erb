@@ -21,6 +21,7 @@
     <div class="col-lg-6">
       <% if @item.review.count >= 1 %>
       <%# レビューがあれば表示する%>
+        <h5 class="text-center">この商品のレビュー</h5>
         <% @reviews.each do |review| %>
           <div class="row mt-2 border border-secondary rounded p-3">
             <div class="col-lg-5">
