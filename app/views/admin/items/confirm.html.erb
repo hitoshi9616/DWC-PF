@@ -9,27 +9,29 @@
       <%= image_tag @item.get_image(300, 300) %>
     </div>
     <div class="col-lg-8">
-      <div class="row">
-        <strong>商品名：<%= @item.name %></strong>
-      </div>
-      <div class="row mt-1">
-        価格　：<%= @item.price %>円
-      </div>
-      <div class="row mt-1">
-        紹介文
-      </div>
-      <div class="row mt-1 border border-dark rounded">
-        <%= @item.introduction %>
+      <h4>
+        商品名：<%= @item.name %>
+      </h4>
+      <h5>
+        価格：<%= @item.price %>円
+      </h5>
+      <div class="card p-2">
+        <h5 class="card-title">
+          紹介文
+        </h5>
+        <p class="card-text">
+          <%= @item.introduction %>
+        </p>
       </div>
     </div>
   </div>
 
-  <strong class="row justify-content-center">
+  <strong class="row justify-content-center mt-5">
     この商品に関する情報が完全に消去されます<br />
     本当に削除してもよろしいですか？
   </strong>
 
-  <div class="row justify-content-center mt-2">
+  <div class="row justify-content-center mt-4">
     <%= link_to "削除する", admin_item_path(@item.id), method: :delete, class:"btn btn-danger" %>
   </div>
 

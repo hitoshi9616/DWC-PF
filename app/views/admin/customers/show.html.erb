@@ -82,25 +82,25 @@
         </p>
       </div>
 
-      <div class="row col-lg-12">
-        <%= link_to "情報の確認 / 編集", edit_admin_customer_path(@customer.id), class:"btn btn-primary mx-auto" %>
+      <div class="col text-center">
+        <%= link_to "情報の確認 / 編集", edit_admin_customer_path(@customer.id), class:"btn btn-primary" %>
       </div>
     </div>
 
     <div class="row col-lg-6 offset-1">
       <%# 会員の最新投稿 %>
-      <div>
-        <h5 class="col border-bottom">最新の投稿</h5>
+      <div class="col">
+        <h5 class="col">最新の投稿</h5>
 
-        <div class="col p-2">
+        <div class="col card p-2">
           <% if @post != nil %>
-            <div>
+            <h6 class="card-title">
               <strong><%= @post.title %></strong>
-            </div>
+            </h6>
 
-            <div class="border border-dark rounded mt-2">
+            <p class="card-text">
               <%= @post.text %>
-            </div>
+            </p>
           <% else %>
             <h5>投稿はありません</h5>
           <% end %>
@@ -108,17 +108,17 @@
       </div>
       <%# 会員の最新レビュー %>
       <div>
-        <h5 class="col border-bottom">最新のレビュー</h5>
+        <h5 class="col">最新のレビュー</h5>
 
-        <div class="col p-2">
+        <div class="col card p-2">
           <% if @review != nil %>
-            <div class="col">
+            <h6 class="card-title">
               <strong><%= @review.title %></strong>
-            </div>
+            </h6>
 
-            <div class="col mt-1">
+            <h6 class="card-subtitle">
               商品名：<%= @review.item.name %></p>
-            </div>
+            </h6>
 
             <%# ★で評価するための記述 %>
             <div class="col" id="star<%= @review.id %>"></div>
@@ -134,9 +134,9 @@
                 });
               </script>
 
-            <div class="border border-dark rounded mt-2">
+            <p class="card-text mt-2">
               <%= @review.text %>
-            </div>
+            </p>
           <% else %>
             <h5>レビューはありません</h5>
           <% end %>
