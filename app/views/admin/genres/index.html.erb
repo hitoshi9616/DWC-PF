@@ -1,27 +1,38 @@
 <div class="container">
 
-  <div　class="row">
-    <h2>ジャンル一覧</h2>
-    <h5>
+  <div class="row mt-3">
+    <h2 class="col-lg-5">投稿ジャンル一覧</h2>
+    <h5 class="col-lg-7 form-group">
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
         <%= f.label :gemre, "ジャンル登録" %>
         <%= f.text_field :genre %>
-        <%= f.submit "登録" %>
+        <%= f.submit "登録", class:"btn btn-success btn-sm mb-2" %>
       <% end %>
     </h5>
+  </div>
 
-    <div class="row">
-      <% if @genres.count >= 1 %>
+  <div class="col-10">
+    <% if @genres.count >= 1 %>
+      <table class="table">
+        <thead>
+          <th>投稿ジャンル内容</th>
+          <th></th>
+        </thead>
+
         <% @genres.each do |genre| %>
-          <div>
-            <%= genre.genre %>
-            <%= link_to "詳細へ", admin_genre_path(genre.id) %>
-          </div>
+          <tbody>
+            <td><%= genre.genre %></td>
+            <td class="text-right"><%= link_to "削除する", admin_genre_path(genre.id),method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "本当に削除しますか？" %></td>
+          </tbody>
         <% end %>
-      <% else %>
-        <p>登録されているジャンルはありません</p>
-      <% end %>
-    </div>
+      </table>
+    <% else %>
+      <h5>
+        登録されているジャンルはありません<br />
+        右上のジャンル登録フォームへ入力し<br />
+        登録ボタンをクリックしてください
+      </h5>
+    <% end %>
   </div>
 
 </div>
