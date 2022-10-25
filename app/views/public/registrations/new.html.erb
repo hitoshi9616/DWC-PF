@@ -12,11 +12,11 @@
         </div>
         <div class="col-lg-3">
           <%= f.label :last_name, "(姓)", class:"ml-3" %>
-          <%= f.text_field :last_name, :placeholder => "大谷", autofocus: true, required: true %>
+          <%= f.text_field :last_name, :placeholder => "鈴木", autofocus: true, required: true %>
         </div>
         <div class="col-lg-3">
           <%= f.label :first_name, "(名)", class:"ml-3" %>
-          <%= f.text_field :first_name, :placeholder => "翔平", autofocus: true, required: true %>
+          <%= f.text_field :first_name, :placeholder => "一郎", autofocus: true, required: true %>
         </div>
       </div>
 
@@ -26,11 +26,11 @@
         </div>
         <div class="col-lg-3">
           <%= f.label :last_name_kana, "(セイ)" %>
-          <%= f.text_field :last_name_kana, :placeholder => "オオタニ", autofocus: true %>
+          <%= f.text_field :last_name_kana, :placeholder => "スズキ", autofocus: true, required: true %>
         </div>
         <div class="col-lg-3">
           <%= f.label :first_name_kana, "(メイ)" %>
-          <%= f.text_field :first_name_kana, :placeholder => "ショウヘイ", autofocus: true %>
+          <%= f.text_field :first_name_kana, :placeholder => "イチロウ", autofocus: true, required: true %>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
           <%= f.label :nickname, "ニックネーム" %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.text_field :nickname, :placeholder => "オオタニサン", autofocus: true %>
+          <%= f.text_field :nickname, :placeholder => "イチロー", autofocus: true, required: true %>
           <%= f.label "※公開される名前になります" %>
         </div>
       </div>
@@ -49,7 +49,7 @@
           <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.text_field :phone_number, :placeholder => "09012345678", autofocus: true %>
+          <%= f.text_field :phone_number, :placeholder => "09012345678", autofocus: true, required: true %>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
           <%= f.label :age, "年齢" %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.text_field :age, :placeholder => "25", autofocus: true %>
+          <%= f.text_field :age, :placeholder => "25", autofocus: true, required: true %>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           <%= f.label :email, "メールアドレス" %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.email_field :email, :placeholder => "sample@gmail.com", autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, :placeholder => "sample@gmail.com", autofocus: true, autocomplete: "email", required: true %>
         </div>
       </div>
 
@@ -79,7 +79,7 @@
           <% end %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", required: true %>
         </div>
       </div>
 
@@ -88,7 +88,7 @@
           <%= f.label :"パスワード（確認用）" %>
         </div>
         <div class="col-lg-6 ml-5">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
         </div>
       </div>
 

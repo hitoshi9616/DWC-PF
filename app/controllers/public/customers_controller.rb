@@ -6,6 +6,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @review = Review.find_by(customer_id: @customer.id)
+    @post = Post.find_by(customer_id: @customer.id)
   end
 
   def edit
@@ -18,7 +20,7 @@ class Public::CustomersController < ApplicationController
       @customer.update(customer_params)
       redirect_to customer_path(@customer.id)
     else
-      render :edit
+      render edit_customer_path(@customer.id)
     end
   end
 

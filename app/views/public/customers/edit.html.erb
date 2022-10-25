@@ -1,14 +1,78 @@
 <div class="container">
 
-  <p>
-    現在のニックネーム<br />
-    <%= @customer.nickname %>
-  </p>
+  <h2 class="mt-3">
+    会員情報編集
+  </h2>
 
-  <%= form_with model: @customer do |f| %>
-    <%= f.label :nickname, "新しいニックネーム" %><br />
-    <%= f.text_field :nickname %>
-    <%= f.submit "変更" %>
+  <%= form_with model: @customer, url: customer_path(@customer), method: :patch, class:"mt-3" do |f| %>
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label "名前" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.label :last_name, "(姓)", class:"ml-3" %>
+        <%= f.text_field :last_name, :placeholder => "鈴木", autofocus: true %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.label :first_name, "(名)", class:"ml-3" %>
+        <%= f.text_field :first_name, :placeholder => "一郎", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label "フリガナ" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.label :last_name_kana, "(セイ)" %>
+        <%= f.text_field :last_name_kana, :placeholder => "スズキ", autofocus: true %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.label :first_name_kana, "(メイ)" %>
+        <%= f.text_field :first_name_kana, :placeholder => "イチロウ", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label :nickname, "ニックネーム" %>
+      </div>
+      <div class="col-lg-6 ml-5">
+        <%= f.text_field :nickname, :placeholder => "イチロー", autofocus: true %>
+        <%= f.label "※公開される名前になります" %>
+      </div>
+    </div>
+
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
+      </div>
+      <div class="col-lg-6 ml-5">
+        <%= f.text_field :phone_number, :placeholder => "09012345678", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label :age, "年齢" %>
+      </div>
+      <div class="col-lg-6 ml-5">
+        <%= f.text_field :age, :placeholder => "25", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="row field form-group">
+      <div class="col-lg-3 text-right">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <div class="col-lg-6 ml-5">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <%= f.submit "編集完了", class:"btn btn-success col-lg-1 offset-4" %>
+    </div>
   <% end %>
 
 </div>

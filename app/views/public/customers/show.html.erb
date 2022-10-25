@@ -1,28 +1,118 @@
 <div class="container">
 
-  <h2>
+  <h2 class="row col-lg-12 justify-content-center mt-3">
     <%= @customer.nickname %>さんのページ
   </h2>
 
-  <div>
-    <div>
-      <p>
-        投稿数：
-        <%= @customer.posts.count %>
-      </p>
-      <p>
-        レビュー数：<%= @customer.reviews.count %>
-      </p>
-    <% if @customer.id == current_customer.id %>
-      <div>
-        <%= link_to "ニックネーム変更", edit_customer_path %>
+  <div class="row col-lg-12 mt-4">
+    <div class="col-lg-5 p-1">
+      <div class="border border-dark">
+        <h5 class="text-center mt-2">会員情報</h5>
+
+        <div class="row">
+          <p class="col-lg-5 text-right">ニックネーム</p>
+          <p class="col-lg-1">：</p>
+          <p class="col-lg-6">
+            <%= @customer.nickname %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="col-lg-5 text-right">投稿数</p>
+          <p class="col-lg-1">：</p>
+          <p class="col-lg-6">
+            <%= @customer.posts.count %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="col-lg-5 text-right">レビュー数</p>
+          <p class="col-lg-1">：</p>
+          <p class="col-lg-6">
+            <%= @customer.reviews.count %>
+          </p>
+        </div>
+
+        <% if @customer.id == current_customer.id %>
+        <div class="col text-center">
+          <div>
+            <%= link_to "会員情報編集", edit_customer_path, class:"btn btn-primary mb-3" %>
+          </div>
+
+          <div>
+            <%= link_to "投稿画面へ", new_post_path, class:"btn btn-success mb-3" %>
+          </div>
+        </div>
+        <% end %>
       </div>
-      <div>
-        <%= link_to "投稿画面へ", new_post_path %>
+    </div>
+
+    <div class="row col-lg-6 offset-1">
+
+      <%# 会員の最新投稿 %>
+      <div class="col-lg-12">
+        <h5 class="col">最新の投稿</h5>
+
+        <% if @post != nil %>
+          <div class="col card p-2">
+            <h6 class="card-title">
+              <strong>
+                <%= link_to post_path(@post.id) do %>
+                  <%= @post.title %>
+                <% end %>
+              </strong>
+            </h6>
+
+            <p class="card-text">
+              <%= @post.text %>
+            </p>
+          </div>
+        <% else %>
+          <h5 class="col mt-3">投稿はありません</h5>
+        <% end %>
       </div>
-    <% else %>
-      <div></div>
-    <% end %>
+
+      <%# 会員の最新レビュー %>
+      <div class="col-lg-12">
+        <h5 class="col mt-4">最新のレビュー</h5>
+
+        <% if @review != nil %>
+          <div class="col card p-2">
+            <h6 class="card-title">
+              <strong>
+                <%= link_to review_path(@review.id) do %>
+                  <%= @review.title %>
+                <% end %>
+              </strong>
+            </h6>
+
+            <h6 class="card-subtitle">
+              商品名：<%= @review.item.name %></p>
+            </h6>
+
+            <%# ★で評価するための記述 %>
+            <div class="col" id="star<%= @review.id %>"></div>
+              <script>
+                $('#star<%= @review.id %>').empty();
+                $('#star<%= @review.id %>').raty({
+                  size: 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  half: false,
+                  readOnly: true,
+                  score:<%= @review.evaluation %>
+                });
+              </script>
+
+            <p class="card-text mt-2">
+              <%= @review.text %>
+            </p>
+          </div>
+        <% else %>
+          <h5 class="col mt-3">レビューはありません</h5>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 </div>
