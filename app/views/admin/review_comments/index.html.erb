@@ -17,7 +17,11 @@
         <% @review_comments.each do |comment| %>
           <tr>
             <td><%= comment.customer.nickname %></td>
-            <td><%= comment.review.title %></td>
+            <td>
+              <%= link_to admin_review_path(comment.review_id), class:"text-dark" do %>
+                <%= comment.review.title %>
+              <% end %>
+            </td>
             <td><%= comment.comment %></td>
             <td><%= link_to "コメント削除", admin_review_comment_path(comment.id), method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "このコメントを削除しますか？" %></td>
           </tr>
