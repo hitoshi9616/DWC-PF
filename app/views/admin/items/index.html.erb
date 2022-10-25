@@ -12,9 +12,9 @@
       <div>
         <%= link_to admin_item_path(item.id) do %>
           <div class="card">
-            <%= image_tag item.get_image(100, 100), class:"card-img-top" %>
+            <%= image_tag item.get_image(100, 100), size: "200x150", class:"card-img-top" %>
             <div class="card-body">
-              <p class="card-text">
+              <p class="card-text text-wrap">
                 <%= item.name %><br />
                 <%= item.price %>円<br />
                 レビュー数：<%= item.review.count %>

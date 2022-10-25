@@ -10,11 +10,7 @@
           <%= f.label "名前" %>
         </div>
         <div class="row col-lg-3">
-          <p class="ml-4">(姓)</p>
           <p class="ml-3"><%= @customer.last_name %></p>
-        </div>
-        <div class="row col-lg-3">
-          <p class="ml-3">(名)</p>
           <p class="ml-3"><%= @customer.first_name %></p>
         </div>
       </div>
@@ -24,11 +20,7 @@
           <%= f.label "フリガナ" %>
         </div>
         <div class="row col-lg-3">
-          <p class="ml-3">(セイ)</p>
           <p class="ml-3"><%= @customer.last_name_kana %></p>
-        </div>
-        <div class="row col-lg-3">
-          <p class="ml-3">(メイ)</p>
           <p class="ml-3"><%= @customer.first_name_kana %></p>
         </div>
       </div>
@@ -37,7 +29,7 @@
         <div class="col-lg-3 text-right">
           <%= f.label :nickname, "ニックネーム" %>
         </div>
-        <div class="row col-lg-6 ml-5">
+        <div class="row col-lg-6">
           <p class="ml-3"><%= @customer.nickname %></p>
         </div>
       </div>
@@ -46,7 +38,7 @@
         <div class="col-lg-3 text-right">
           <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
         </div>
-        <div class="row col-lg-6 ml-5">
+        <div class="row col-lg-6">
           <p class="ml-3"><%= @customer.phone_number %></p>
         </div>
       </div>
@@ -55,7 +47,7 @@
         <div class="col-lg-3 text-right">
           <%= f.label :age, "年齢" %>
         </div>
-        <div class="row col-lg-6 ml-5">
+        <div class="row col-lg-6">
           <p class="ml-3"><%= @customer.age %></p>
         </div>
       </div>
@@ -64,22 +56,22 @@
         <div class="col-lg-3 text-right">
           <%= f.label :email, "メールアドレス" %>
         </div>
-        <div class="row col-lg-6 ml-5">
+        <div class="row col-lg-6">
           <p class="ml-3"><%= @customer.email %></p>
         </div>
       </div>
 
     <div class="row">
-      <p class="col-lg-3 text-center offset-1">
+      <p class="offset-2">
         投稿数：
         <%= @customer.posts.count %>
       </p>
-      <p class="col-lg-3 text-center">
+      <p class="ml-4">
         レビュー数：<%= @customer.reviews.count %>
       </p>
     </div>
 
-    <div class="row field form-group">
+    <div class="row field form-group mt-2">
       <div class="col-lg-3 text-right">
         <%= f.label :"会員ステータス" %>
       </div>
@@ -94,7 +86,7 @@
     </div>
 
     <div class="row">
-      <%= f.submit "編集完了", class:"btn btn-success mx-auto" %>
+      <%= f.submit "編集完了", class:"btn btn-success col-lg-2 offset-2" %>
     </div>
   <% end %>
 

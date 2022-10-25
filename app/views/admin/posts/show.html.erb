@@ -21,20 +21,31 @@
       </div>
 
       <div class="col text-center mt-4">
-        <%= link_to "投稿削除", admin_post_confirm_path(@post.id), class:"btn btn-danger" %>
+        <%= link_to "削除画面へ", admin_post_confirm_path(@post.id), class:"btn btn-danger" %>
       </div>
     </div>
 
     <div class="col-lg-6 ml-2">
-      <p>
+      <h5 class="text-center">
         コメント件数：<%= @post.post_comments.count %>
-      </p>
-      <%# 投稿に対するコメントを全て表示する %>
-      <% @post.post_comments.each do |post_comment| %>
-        <p><%= post_comment.customer.nickname %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
-        <p><%= post_comment.comment %></p>
-        <%= link_to "コメント削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "削除しますか？" %>
+      </h5>
+      <% if @post.post_comments.count >= 1 %>
+        <% @post.post_comments.each do |post_comment| %>
+          <div class="card col mt-4">
+            <div class="row card-title border-bottom">
+              <div class="border-right col-lg-5 text-center pt-2">
+                <%= post_comment.customer.nickname %>
+              </div>
+              <div class="border-right col-lg-4 text-center p-2">
+                <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              </div>
+              <%= link_to "コメント削除", admin_post_comment_path(post_comment.id), method: :delete, class:"btn btn-danger col","data-confirm" => "このコメントを削除しますか？" %>
+            </div>
+            <p class="card-tect p-1"><%= post_comment.comment %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center">この投稿に対するコメントはありません</p>
       <% end %>
     </div>
   </div>

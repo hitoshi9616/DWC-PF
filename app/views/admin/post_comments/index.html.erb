@@ -1,9 +1,9 @@
 <div class="container">
 
-  <h2>投稿コメント一覧</h2>
+  <h2 class="mt-3">投稿コメント一覧</h2>
 
   <% if @post_comments.count >= 1 %>
-    <table class="table">
+    <table class="table mt-3">
       <thead>
         <tr>
           <th>投稿者</th>
@@ -19,13 +19,13 @@
             <td><%= comment.customer.nickname %></td>
             <td><%= comment.post.title %></td>
             <td><%= comment.comment %></td>
-            <td><%= link_to "コメント削除", admin_post_comment_path(comment.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+            <td><%= link_to "コメント削除", admin_post_comment_path(comment.id), method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "このコメントを削除しますか？" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   <% else %>
-    <h5>コメントがありません</h5>
+    <h5 class="mt-3">コメントがありません</h5>
   <% end %>
 
 </div>
