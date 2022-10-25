@@ -87,7 +87,10 @@
             </h6>
 
             <h6 class="card-subtitle">
-              商品名：<%= @review.item.name %></p>
+              商品名：
+              <%= link_to item_path(@review.item_id) do %>
+                <%= @review.item.name %>
+              <% end %>
             </h6>
 
             <%# ★で評価するための記述 %>
