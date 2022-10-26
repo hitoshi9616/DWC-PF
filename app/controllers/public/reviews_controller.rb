@@ -25,6 +25,10 @@ class Public::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+  end
+
+  def update
+    review = Review.find(params[:id])
     if review.update(review_params)
       redirect_to review_path(@review.id)
     else
@@ -32,16 +36,20 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def confirm
+    @review = Review.find(params[:id])
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to reviews_path
+    redirect_to customer_path(current_customer.id)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:evaluation, :title, :text, :evaluation, :item_id)
+    params.require(:review).permit(:item_id, :evaluation, :title, :text)
   end
 
 end

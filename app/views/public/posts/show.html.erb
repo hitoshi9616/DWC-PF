@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-lg-5">
       <h5 class="col text-center mt-2">投稿者：
-        <%= link_to customer_path(@post.customer.id), class:"text-dark" do %>
+        <%= link_to customer_path(@post.customer.id) do %>
           <strong><%= @post.customer.nickname %></strong>
         <% end %>
       </h5>
@@ -45,6 +45,7 @@
       <h5 class="text-center">
         コメント件数：<%= @post.post_comments.count %>
       </h5>
+
       <% if @post.post_comments.count >= 1 %>
         <% @post.post_comments.each do |post_comment| %>
           <div class="card col mt-4">
@@ -52,13 +53,16 @@
               <div class="border-right col-lg-5 text-center pt-2">
                 <%= post_comment.customer.nickname %>
               </div>
+
               <div class="col-lg-4 text-center p-2">
                 <%= post_comment.created_at.strftime('%Y/%m/%d') %>
               </div>
+
               <% if post_comment.customer.id == current_customer.id %>
                 <%= link_to "コメント削除", post_post_comment_path(post_comment.id), method: :delete, class:"btn btn-outline-danger col","data-confirm" => "このコメントを削除しますか？" %>
               <% end %>
             </div>
+
             <p class="card-tect p-1"><%= post_comment.comment %></p>
           </div>
         <% end %>
