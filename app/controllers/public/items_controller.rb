@@ -6,6 +6,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @reviews = Review.where(item_id: @item.id)
     @review = Review.new
   end
 

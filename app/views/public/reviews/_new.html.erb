@@ -1,39 +1,49 @@
-<div class="container">
+<%= form_with model: review do |f| %>
+<div class="row col">
+  <div class="row col-lg-12 form-group">
+    <div class="col-lg-12">
+      <strong><%= f.label :"レビュータイトル" %></strong>
+    </div>
 
-  <%= form_with model: review do |f| %>
-    <div class="row">
-      <%= f.label :evaluation, "評価" %>
+    <div class="col-lg-12">
+      <%= f.text_field :title, class:"form-control col-lg-6" %>
+    </div>
+  </div>
+
+  <div class="row col-lg-12 form-group">
+    <div class="col-lg-2">
+      <strong><%= f.label :evaluation, "評価" %></strong>
       <%= f.hidden_field :evaluation, id: :review_star %>
-      <%# ★で評価するための記述 %>
-      <div id="star"></div>
-      <script>
-      $('#star').empty();
-      $('#star').raty({
-        size: 36,
-        starOff: '<%= asset_path('star-off.png') %>',
-        starOn: '<%= asset_path('star-on.png') %>',
-        scoreName: 'review[evaluation]',
-        half: false,
-      });
-      </script>
+    </div>
+    <div id="star"></div>
+    <%# ★で評価するための記述 %>
+    <script>
+  　$('#star').empty();
+    $('#star').raty({
+      size : 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'review[evaluation]',
+      half: false,
+    });
+    </script>
+  </div>
+
+  <div class="row col-lg-12 form-group mt-2">
+    <div class="col-lg-12">
+      <strong><%= f.label :"レビュー内容" %></strong>
     </div>
 
-    <div>
-      <%= f.label :"レビュータイトル" %>
-      <%= f.text_field :title %>
+    <div class="col-lg-12">
+      <%= f.text_area :text, class:"col-lg-12 form-control" %>
     </div>
+  </div>
 
-    <div>
-      <%= f.label :"レビュー内容" %><br />
-      <%= f.text_area :text %>
-    </div>
+  <%# どの商品に対してのレビューか分かるように紐づける %>
+  <%= f.hidden_field :item_id, :value => item.id %>
 
-    <%# どの商品に対してのレビューか分かるように紐づける %>
-    <%= f.hidden_field :item_id, :value => item.id %>
-
-    <div>
-      <%= f.submit "レビュー投稿" %>
-    </div>
-  <% end %>
-
+  <div class="col-lg-12 text-center mt-3">
+    <%= f.submit "レビュー投稿", class:"btn btn-success" %>
+  </div>
 </div>
+<% end %>

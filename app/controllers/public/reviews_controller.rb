@@ -17,7 +17,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     if @review.save
-      redirect_to review_path(@review.id)
+      redirect_to item_path(@review.item_id)
     else
       redirect_back(fallback_location: root_path)
     end
