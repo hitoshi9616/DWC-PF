@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id)
     else
+      @post = Post.new
       render :new
     end
   end
@@ -21,6 +22,10 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+  end
+
+  def confirm
+    @post = Post.find(params[:id])
   end
 
   def destroy

@@ -28,8 +28,8 @@
       </p>
 
       <div class="col text-center">
-        <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class:"btn btn-outline-danger" %>
-        <p class="mt-2">削除すると投稿者のページに移動します</p>
+        <%= link_to "削除する", post_path(@post.id), method: :delete, class:"btn btn-outline-danger" %>
+        <p class="mt-2">削除するとマイページに移動します</p>
       </div>
     </div>
 

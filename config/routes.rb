@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     resources :customers
     resources :items
     #itemsに対してreviewsをネストしないのはレビュー一覧で全てのレビュー情報を表示するため
+    get "review/confirm/:id" => "reviews#confirm", as: "review/confirm"
     resources :reviews do
       resources :review_comments
     end
+    get "post/confirm/:id" => "posts#confirm", as: "post/confirm"
     resources :posts do
       resources :post_comments
     end
