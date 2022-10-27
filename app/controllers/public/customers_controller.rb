@@ -6,7 +6,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @review = Review.find_by(customer_id: @customer.id)
+    @review = Review.order('updated_at DESC').find_by(customer_id: @customer.id)
+    # @review = @reviews.order('updated_at DESC').limit(1)
     @post = Post.find_by(customer_id: @customer.id)
   end
 

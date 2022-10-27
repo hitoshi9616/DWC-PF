@@ -1,150 +1,145 @@
-<div class="container">
+<h2 class="row col-lg-12 justify-content-center mt-3">
+  <%= @customer.nickname %>さんのページ
+</h2>
 
-  <h2 class="row col-lg-12 justify-content-center mt-3">
-    <%= @customer.nickname %>さんのページ
-  </h2>
+<div class="row col-lg-12 mt-4">
+  <div class="col-lg-5 p-3">
+    <div class="border border-dark">
+      <h5 class="text-center mt-2">会員情報</h5>
 
-  <div class="row col-lg-12 mt-4">
-    <div class="col-lg-5 p-3">
-      <div class="border border-dark">
-        <h5 class="text-center mt-2">会員情報</h5>
-
-        <div class="row mt-3">
-          <p class="col-lg-5 text-right">名前</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.last_name %>
-            <%= " " %>
-            <%= @customer.first_name %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">フリガナ</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.last_name_kana %>
-            <%= " " %>
-            <%= @customer.first_name_kana %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">ニックネーム</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.nickname %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">電話番号</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.phone_number %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">年齢</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.age %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">投稿数</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.posts.count %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">レビュー数</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <%= @customer.reviews.count %>
-          </p>
-        </div>
-
-        <div class="row">
-          <p class="col-lg-5 text-right">ステータス</p>
-          <p class="col-lg-1">：</p>
-          <p class="col-lg-6">
-            <% if @customer.is_deleted == false %>
-              有効
-            <% else %>
-              無効
-            <% end %>
-          </p>
-        </div>
-
-        <div class="col text-center">
-          <%= link_to "情報の確認 / 編集", edit_admin_customer_path(@customer.id), class:"btn btn-primary mb-3" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row col-lg-6 offset-1">
-
-      <%# 会員の最新投稿 %>
-      <div class="col-lg-12">
-        <h5 class="col">最新の投稿</h5>
-
-        <% if @post != nil %>
-          <div class="col card p-2">
-            <h6 class="card-title">
-              <strong><%= @post.title %></strong>
-            </h6>
-
-            <p class="card-text">
-              <%= @post.text %>
-            </p>
-          </div>
-        <% else %>
-          <h5 class="col mt-3">投稿はありません</h5>
-        <% end %>
+      <div class="row mt-3">
+        <p class="col-lg-5 text-right">名前</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.last_name %>
+          <%= " " %>
+          <%= @customer.first_name %>
+        </p>
       </div>
 
-      <%# 会員の最新レビュー %>
-      <div class="col-lg-12">
-        <h5 class="col mt-4">最新のレビュー</h5>
+      <div class="row">
+        <p class="col-lg-5 text-right">フリガナ</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.last_name_kana %>
+          <%= " " %>
+          <%= @customer.first_name_kana %>
+        </p>
+      </div>
 
-        <% if @review != nil %>
-          <div class="col card p-2">
-            <h6 class="card-title">
-              <strong><%= @review.title %></strong>
-            </h6>
+      <div class="row">
+        <p class="col-lg-5 text-right">ニックネーム</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.nickname %>
+        </p>
+      </div>
 
-            <h6 class="card-subtitle">
-              商品名：<%= @review.item.name %>
-            </h6>
+      <div class="row">
+        <p class="col-lg-5 text-right">電話番号</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.phone_number %>
+        </p>
+      </div>
 
-            <%# ★で評価するための記述 %>
-            <div class="col" id="star<%= @review.id %>"></div>
-              <script>
-                $('#star<%= @review.id %>').empty();
-                $('#star<%= @review.id %>').raty({
-                  size: 36,
-                  starOff: '<%= asset_path('star-off.png') %>',
-                  starOn: '<%= asset_path('star-on.png') %>',
-                  half: false,
-                  readOnly: true,
-                  score:<%= @review.evaluation %>
-                });
-              </script>
+      <div class="row">
+        <p class="col-lg-5 text-right">年齢</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.age %>
+        </p>
+      </div>
 
-            <p class="card-text mt-2">
-              <%= @review.text %>
-            </p>
-          </div>
-        <% else %>
-          <h5 class="col mt-3">レビューはありません</h5>
-        <% end %>
+      <div class="row">
+        <p class="col-lg-5 text-right">投稿数</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.posts.count %>
+        </p>
+      </div>
+
+      <div class="row">
+        <p class="col-lg-5 text-right">レビュー数</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <%= @customer.reviews.count %>
+        </p>
+      </div>
+
+      <div class="row">
+        <p class="col-lg-5 text-right">ステータス</p>
+        <p class="col-lg-1">：</p>
+        <p class="col-lg-6">
+          <% if @customer.is_deleted == false %>
+            有効
+          <% else %>
+            無効
+          <% end %>
+        </p>
+      </div>
+
+      <div class="col text-center">
+        <%= link_to "情報の確認 / 編集", edit_admin_customer_path(@customer.id), class:"btn btn-primary mb-3" %>
       </div>
     </div>
   </div>
 
+  <div class="row col-lg-6 offset-1">
+    <%# 会員の最新投稿 %>
+    <div class="col-lg-12">
+      <h5 class="col">最新の投稿</h5>
+
+      <% if @post != nil %>
+        <div class="col card p-2">
+          <h6 class="card-title">
+            <strong><%= @post.title %></strong>
+          </h6>
+
+          <p class="card-text">
+            <%= @post.text %>
+          </p>
+        </div>
+      <% else %>
+        <h5 class="col mt-3">投稿はありません</h5>
+      <% end %>
+    </div>
+
+    <%# 会員の最新レビュー %>
+    <div class="col-lg-12">
+      <h5 class="col mt-4">最新のレビュー</h5>
+
+      <% if @review != nil %>
+        <div class="col card p-2">
+          <h6 class="card-title">
+            <strong><%= @review.title %></strong>
+          </h6>
+
+          <h6 class="card-subtitle">
+            商品名：<%= @review.item.name %>
+          </h6>
+
+          <%# ★で評価するための記述 %>
+          <div class="col" id="star<%= @review.id %>"></div>
+            <script>
+              $('#star<%= @review.id %>').empty();
+              $('#star<%= @review.id %>').raty({
+                size: 36,
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn: '<%= asset_path('star-on.png') %>',
+                half: false,
+                readOnly: true,
+                score:<%= @review.evaluation %>
+              });
+            </script>
+
+          <p class="card-text mt-2">
+            <%= @review.text %>
+          </p>
+        </div>
+      <% else %>
+        <h5 class="col mt-3">レビューはありません</h5>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,57 +1,54 @@
-<div class="container">
+<h2 class="mt-3">商品詳細</h2>
 
-  <h2 class="mt-3">商品詳細</h2>
-
-  <div class="row mt-3">
-    <div class="col-lg-5">
-      <div class="card">
-        <%= image_tag @item.get_image(200, 200), class:"card-img-top" %>
-        <div class="p-2">
-          <p><%= @item.name %></p>
-          <p>価格：<%= @item.price %>円</p>
-          <p><%= @item.introduction %></p>
-        </div>
-      </div>
-      <div class="col mt-3 text-center">
-        <%= link_to "商品編集", edit_admin_item_path(@item.id), class:"mr-2 btn btn-primary" %>
-        <%= link_to "商品削除", admin_item_confirm_path(@item.id), class:"btn btn-danger" %>
+<div class="row mt-3">
+  <div class="col-lg-5">
+    <div class="card">
+      <%= image_tag @item.get_image(200, 200), class:"card-img-top" %>
+      <div class="p-2">
+        <p><%= @item.name %></p>
+        <p>価格：<%= @item.price %>円</p>
+        <p><%= @item.introduction %></p>
       </div>
     </div>
 
-    <div class="col-lg-6">
-      <% if @item.review.count >= 1 %>
-      <%# レビューがあれば表示する%>
-        <h5 class="text-center">この商品のレビュー</h5>
-        <% @reviews.each do |review| %>
-          <div class="row mt-2 border border-secondary rounded p-3">
-            <div class="col-lg-5">
-              <%= link_to admin_review_path(review.id), class:"text-dark" do %>
-                <strong><%= review.title %></strong>
-              <% end %>
-            </div>
-            <%# ★で評価するための記述 %>
-            <div class="row col-lg-6 offset-lg-1">
-              評価：
-              <div id="star<%= review.id %>"></div>
-              <script>
-                $('#star<%= review.id %>').empty();
-                $('#star<%= review.id %>').raty({
-                  size: 36,
-                  starOff: '<%= asset_path('star-off.png') %>',
-                  starOn: '<%= asset_path('star-on.png') %>',
-                  half: false,
-                  readOnly: true,
-                  score:<%= review.evaluation %>
-                });
-              </script>
-            </div>
-            <div class="col-lg-12 mt-3"><%= review.text %></div>
-          </div>
-        <% end %>
-      <% else %>
-        <h5 class="text-center">この商品はまだレビューがありません</h5>
-      <% end %>
+    <div class="col mt-3 text-center">
+      <%= link_to "商品編集", edit_admin_item_path(@item.id), class:"mr-2 btn btn-primary" %>
+      <%= link_to "商品削除", admin_item_confirm_path(@item.id), class:"btn btn-danger" %>
     </div>
   </div>
 
+  <div class="col-lg-6">
+    <% if @item.review.count >= 1 %>
+    <%# レビューがあれば表示する%>
+      <h5 class="text-center">この商品のレビュー</h5>
+      <% @reviews.each do |review| %>
+        <div class="row mt-2 border border-secondary rounded p-3">
+          <div class="col-lg-5">
+            <%= link_to admin_review_path(review.id), class:"text-dark" do %>
+              <strong><%= review.title %></strong>
+            <% end %>
+          </div>
+          <%# ★で評価するための記述 %>
+          <div class="row col-lg-6 offset-lg-1">
+            評価：
+            <div id="star<%= review.id %>"></div>
+            <script>
+              $('#star<%= review.id %>').empty();
+              $('#star<%= review.id %>').raty({
+                size: 36,
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn: '<%= asset_path('star-on.png') %>',
+                half: false,
+                readOnly: true,
+                score:<%= review.evaluation %>
+              });
+            </script>
+          </div>
+          <div class="col-lg-12 mt-3"><%= review.text %></div>
+        </div>
+      <% end %>
+    <% else %>
+      <h5 class="text-center">この商品はまだレビューがありません</h5>
+    <% end %>
+  </div>
 </div>
