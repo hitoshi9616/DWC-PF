@@ -12,6 +12,7 @@
         <th>タイトル</th>
         <th>投稿者</th>
         <th>コメント数</th>
+        <th>投稿年_日_時</th>
       </tr>
     </thead>
 
@@ -30,6 +31,7 @@
             <% end %>
           </td>
           <td><%= post.post_comments.count %></td>
+          <td><%= post.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
         </tr>
       <% end %>
     </tbody>

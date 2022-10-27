@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
       @customer.update(customer_params)
       redirect_to customer_path(@customer.id)
     else
-      render edit_customer_path(@customer.id)
+      render :edit
     end
   end
 

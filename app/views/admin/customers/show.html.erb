@@ -90,16 +90,23 @@
     <div class="col-lg-12">
       <h5 class="col">最新の投稿</h5>
 
-      <% if @posts != nil %>
+      <% if @posts.first != nil %>
         <div class="col card p-2">
           <h6 class="card-title">
-            <strong><%= @posts.first.title %></strong>
+            <%= link_to admin_post_path(@posts.first) do %>
+              <strong><%= @posts.first.title %></strong>
+            <% end %>
           </h6>
 
           <p class="card-text">
             <%= @posts.first.text %>
           </p>
         </div>
+
+        <p class="col mt-2 text-right">
+          投稿日時
+          <%= @posts.first.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+        </p>
       <% else %>
         <h5 class="col mt-3">投稿はありません</h5>
       <% end %>
@@ -109,10 +116,12 @@
     <div class="col-lg-12">
       <h5 class="col mt-4">最新のレビュー</h5>
 
-      <% if @reviews != nil %>
+      <% if @reviews.first != nil %>
         <div class="col card p-2">
           <h6 class="card-title">
-            <strong><%= @reviews.first.title %></strong>
+            <%= link_to admin_review_path(@reviews.first) do %>
+              <strong><%= @reviews.first.title %></strong>
+            <% end %>
           </h6>
 
           <h6 class="card-subtitle">
@@ -137,6 +146,11 @@
             <%= @reviews.first.text %>
           </p>
         </div>
+
+        <p class="col mt-2 text-right">
+          投稿日時
+          <%= @reviews.first.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+        </p>
       <% else %>
         <h5 class="col mt-3">レビューはありません</h5>
       <% end %>

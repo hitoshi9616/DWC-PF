@@ -46,6 +46,11 @@
           </div>
           <div class="col-lg-12 mt-3"><%= review.text %></div>
         </div>
+
+        <p class="col mt-2 text-right">
+          投稿日時
+          <%= review.created_at.strftime("%Y_%m/%d_%H:%M") %>
+        </p>
       <% end %>
     <% else %>
       <h5 class="text-center">この商品はまだレビューがありません</h5>
