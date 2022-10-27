@@ -6,8 +6,8 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @review = Review.find_by(customer_id: @customer.id)
-    @post = Post.find_by(customer_id: @customer.id)
+    @reviews = Review.where(customer_id: @customer.id).order('updated_at DESC').limit(1)
+    @posts = Post.where(customer_id: @customer.id).order('updated_at DESC').limit(1)
   end
 
   def edit
@@ -19,7 +19,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to admin_customers_path
     else
-      render edit_admin_customer_path(@customer.id)
+      render :edit
     end
   end
 

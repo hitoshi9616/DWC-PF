@@ -90,14 +90,14 @@
     <div class="col-lg-12">
       <h5 class="col">最新の投稿</h5>
 
-      <% if @post != nil %>
+      <% if @posts != nil %>
         <div class="col card p-2">
           <h6 class="card-title">
-            <strong><%= @post.title %></strong>
+            <strong><%= @posts.first.title %></strong>
           </h6>
 
           <p class="card-text">
-            <%= @post.text %>
+            <%= @posts.first.text %>
           </p>
         </div>
       <% else %>
@@ -109,32 +109,32 @@
     <div class="col-lg-12">
       <h5 class="col mt-4">最新のレビュー</h5>
 
-      <% if @review != nil %>
+      <% if @reviews != nil %>
         <div class="col card p-2">
           <h6 class="card-title">
-            <strong><%= @review.title %></strong>
+            <strong><%= @reviews.first.title %></strong>
           </h6>
 
           <h6 class="card-subtitle">
-            商品名：<%= @review.item.name %>
+            商品名：<%= @reviews.first.item.name %>
           </h6>
 
           <%# ★で評価するための記述 %>
-          <div class="col" id="star<%= @review.id %>"></div>
+          <div class="col" id="star<%= @reviews.first.id %>"></div>
             <script>
-              $('#star<%= @review.id %>').empty();
-              $('#star<%= @review.id %>').raty({
+              $('#star<%= @reviews.first.id %>').empty();
+              $('#star<%= @reviews.first.id %>').raty({
                 size: 36,
                 starOff: '<%= asset_path('star-off.png') %>',
                 starOn: '<%= asset_path('star-on.png') %>',
                 half: false,
                 readOnly: true,
-                score:<%= @review.evaluation %>
+                score:<%= @reviews.first.evaluation %>
               });
             </script>
 
           <p class="card-text mt-2">
-            <%= @review.text %>
+            <%= @reviews.first.text %>
           </p>
         </div>
       <% else %>

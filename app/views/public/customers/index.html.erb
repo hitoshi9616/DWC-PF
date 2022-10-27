@@ -1,37 +1,33 @@
-<div class="container">
+<h2 class="mt-3">会員一覧</h2>
 
-  <h2 class="mt-3">会員一覧</h2>
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th>ニックネーム</th>
+      <th>投稿数</th>
+      <th>レビュー数</th>
+    </tr>
+  </thead>
 
-  <table class="table mt-3">
-    <thead>
+  <% @customers.each do |customer| %>
+    <tbody>
       <tr>
-        <th>ニックネーム</th>
-        <th>投稿数</th>
-        <th>レビュー数</th>
+        <td>
+          <%= link_to customer_path(customer.id) do %>
+            <%= customer.nickname %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to posts_path do %>
+            <%= customer.posts.count %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to reviews_path do %>
+            <%= customer.reviews.count %>
+          <% end %>
+        </td>
       </tr>
-    </thead>
-
-    <% @customers.each do |customer| %>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to customer_path(customer.id) do %>
-              <%= customer.nickname %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to posts_path do %>
-              <%= customer.posts.count %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to reviews_path do %>
-              <%= customer.reviews.count %>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
-
-</div>
+    </tbody>
+  <% end %>
+</table>

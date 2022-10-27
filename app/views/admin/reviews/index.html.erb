@@ -1,63 +1,60 @@
-<div class="container">
+<div class="row mt-3">
+  <h2 class="col-lg-5">レビュー一覧</h2>
 
-  <div class="row mt-3">
-    <h2 class="col-lg-5">レビュー一覧</h2>
-    <p class="col-lg-5 ml-3"><%= link_to "レビューコメント一覧へ", admin_review_comments_path, class:"btn btn-info" %></p>
-  </div>
-
-  <% if @reviews.count >= 1 %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>タイトル</th>
-          <th>評価</th>
-          <th>商品</th>
-          <th>投稿者</th>
-          <th>コメント数</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to admin_review_path(review.id), class:"text-dark" do %>
-                <%= review.title %>
-              <% end %>
-            </td>
-            <td>
-              <%# ★で評価するための記述 %>
-              <div id="star<%= review.id %>"></div>
-              <script>
-                $('#star<%= review.id %>').empty();
-                $('#star<%= review.id %>').raty({
-                  size: 36,
-                  starOff: '<%= asset_path('star-off.png') %>',
-                  starOn: '<%= asset_path('star-on.png') %>',
-                  half: false,
-                  readOnly: true,
-                  score:<%= review.evaluation %>
-                });
-              </script>
-            </td>
-            <td>
-              <%= link_to admin_item_path(review.item_id), class:"text-dark" do %>
-                <%= image_tag review.item.get_image(50, 50) %>
-                <%= review.item.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to admin_customer_path(review.customer_id), class:"text-dark" do %>
-                <%= review.customer.nickname %>
-              <% end %>
-            </td>
-            <td><%= review.review_comments.count %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <h4>レビューはありません</h4>
-  <% end %>
-
+  <p class="col-lg-5 ml-3"><%= link_to "レビューコメント一覧へ", admin_review_comments_path, class:"btn btn-info" %></p>
 </div>
+
+<% if @reviews.count >= 1 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>評価</th>
+        <th>商品</th>
+        <th>投稿者</th>
+        <th>コメント数</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to admin_review_path(review.id), class:"text-dark" do %>
+              <%= review.title %>
+            <% end %>
+          </td>
+          <td>
+            <%# ★で評価するための記述 %>
+            <div id="star<%= review.id %>"></div>
+            <script>
+              $('#star<%= review.id %>').empty();
+              $('#star<%= review.id %>').raty({
+                size: 36,
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn: '<%= asset_path('star-on.png') %>',
+                half: false,
+                readOnly: true,
+                score:<%= review.evaluation %>
+              });
+            </script>
+          </td>
+          <td>
+            <%= link_to admin_item_path(review.item_id), class:"text-dark" do %>
+              <%= image_tag review.item.get_image(50, 50) %>
+              <%= review.item.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to admin_customer_path(review.customer_id), class:"text-dark" do %>
+              <%= review.customer.nickname %>
+            <% end %>
+          </td>
+          <td><%= review.review_comments.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h4>レビューはありません</h4>
+<% end %>

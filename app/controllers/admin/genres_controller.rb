@@ -12,7 +12,7 @@ class Admin::GenresController < ApplicationController
     else
       @genres = Genre.all
       @genre = Genre.new
-      render admin_genres_path
+      render :index
     end
   end
 

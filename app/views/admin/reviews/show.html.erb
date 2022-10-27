@@ -19,31 +19,32 @@
       <% end %>
     </h5>
 
-     <div class="col card">
-        <div class="row">
-          <div class="col card-title p-1">
-            タイトル：<strong><%= @review.title %></strong>
-          </div>
-
-          <div class="row col text-right">
-            評価：
-            <%# ★で評価するための記述 %>
-            <div id="star<%= @review.id %>"></div>
-            <script>
-              $('#star<%= @review.id %>').empty();
-              $('#star<%= @review.id %>').raty({
-                size: 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                half: false,
-                readOnly: true,
-                score:<%= @review.evaluation %>
-              });
-            </script>
-          </div>
+    <div class="col card">
+      <div class="row">
+        <div class="col card-title p-1">
+          タイトル：<strong><%= @review.title %></strong>
         </div>
 
-      <div class="card-text p-2"><strong>内容</strong>
+        <div class="row col text-right">
+          評価：
+          <%# ★で評価するための記述 %>
+          <div id="star<%= @review.id %>"></div>
+          <script>
+            $('#star<%= @review.id %>').empty();
+            $('#star<%= @review.id %>').raty({
+              size: 36,
+              starOff: '<%= asset_path('star-off.png') %>',
+              starOn: '<%= asset_path('star-on.png') %>',
+              half: false,
+              readOnly: true,
+              score:<%= @review.evaluation %>
+            });
+          </script>
+        </div>
+      </div>
+
+      <div class="card-text p-2">
+        <strong>内容</strong>
         <p class="p-1"><%= @review.text %></p>
       </div>
     </div>
@@ -56,6 +57,7 @@
       <h5 class="text-center">
         コメント件数：<%= @review.review_comments.count %>
       </h5>
+
       <% if @review.review_comments.count >= 1 %>
         <% @review.review_comments.each do |review_comment| %>
           <div class="card col mt-4">
@@ -63,11 +65,14 @@
               <div class="border-right col-lg-5 text-center pt-2">
                 <%= review_comment.customer.nickname %>
               </div>
+
               <div class="border-right col-lg-4 text-center p-2">
                 <%= review_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
               </div>
+
               <%= link_to "コメント削除", admin_review_comment_path(review_comment.id), method: :delete, class:"btn btn-danger col","data-confirm" => "このコメントを削除しますか？" %>
             </div>
+
             <p class="card-tect p-1"><%= review_comment.comment %></p>
           </div>
         <% end %>
