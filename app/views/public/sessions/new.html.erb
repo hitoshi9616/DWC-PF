@@ -18,8 +18,11 @@
     </div>
   <% end %>
 
-  <div class="text-center mt-3">
+  <div class="text-center mt-4">
     <%= link_to "新規登録の場合はこちら", new_customer_registration_path, class:"text-success" %>
   </div>
 
+  <div class="text-center mt-4">
+    <%= link_to "登録せずに閲覧（ゲストログイン）", customers_guest_sign_in_path, class:"btn btn-secondary", method: :post %>
+  </div>
 </div>

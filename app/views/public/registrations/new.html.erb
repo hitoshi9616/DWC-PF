@@ -98,8 +98,11 @@
     <% end %>
   </div>
 
-  <div class="text-center mt-3">
+  <div class="text-center mt-4">
     <%= link_to "登録済みの方はこちら", new_customer_session_path %>
   </div>
 
+  <div class="text-center mt-4">
+    <%= link_to "登録せずに閲覧（ゲストログイン）", customers_guest_sign_in_path, class:"btn btn-secondary", method: :post %>
+  </div>
 </div>

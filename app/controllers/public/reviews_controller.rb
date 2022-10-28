@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def new
     @review = Review.new
   end
