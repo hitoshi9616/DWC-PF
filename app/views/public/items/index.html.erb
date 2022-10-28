@@ -1,6 +1,7 @@
 <h2 class="mt-3">商品一覧</h2>
 
 <div class="row">
+<% if @items.count >= 1 %>
   <% @items.each do |item| %>
     <div class="col-md-3 mt-3">
     <%= link_to item_path(item.id) do %>
@@ -23,4 +24,7 @@
     <% end %>
     </div>
   <% end %>
+<%else %>
+  <h5 class="text-center mt-4">現在準備中です。しばらくお待ちください。</h5>
+<% end %>
 </div>

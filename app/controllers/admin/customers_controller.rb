@@ -3,13 +3,13 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.order('created_at DESC')
   end
 
   def show
     @customer = Customer.find(params[:id])
     @reviews = Review.where(customer_id: @customer.id).order('updated_at DESC').limit(1)
-    @posts = Post.where(customer_id: @customer.id).order('updated_at DESC').limit(1)
+    @posts = Post.where(customer_id: @customer.id).order('created_at DESC').limit(1)
   end
 
   def edit

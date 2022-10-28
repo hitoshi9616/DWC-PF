@@ -105,7 +105,7 @@
 
         <p class="col mt-2 text-right">
           投稿日時
-          <%= @posts.first.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+          <%= @posts.first.created_at.strftime("%Y_%m/%d_%H:%M") %>
         </p>
       <% else %>
         <h5 class="col mt-3">投稿はありません</h5>

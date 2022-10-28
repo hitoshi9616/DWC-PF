@@ -3,7 +3,7 @@ class Admin::ReviewCommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @review_comments = ReviewComment.all
+    @review_comments = ReviewComment.all.order('created_at DESC')
   end
 
   def show

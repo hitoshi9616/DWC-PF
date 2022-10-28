@@ -22,11 +22,11 @@ class Customer < ApplicationRecord
   def self.guest
     find_or_create_by!(nickname: 'ゲスト会員' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.first_name = "ゲスト"
-      customer.first_name_kana = "会員"
-      customer.last_name = "ゲスト"
-      customer.last_name_kana = "カイイン"
-      customer.nickname = ゲスト会員
+      customer.first_name = 'ゲスト'
+      customer.first_name_kana = '会員'
+      customer.last_name = 'ゲスト'
+      customer.last_name_kana = 'カイイン'
+      customer.nickname = 'ゲスト会員'
       customer.phone_number = 00012344321
       customer.age = 20
       customer.is_deleted = false

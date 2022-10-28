@@ -3,7 +3,11 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @post = Post.new
+    if current_customer.email != 'guest@example.com'
+      @post = Post.new
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def create
@@ -18,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC')
   end
 
   def show
@@ -27,7 +31,15 @@ class Public::PostsController < ApplicationController
   end
 
   def confirm
-    @post = Post.find(params[:id])
+    if current_customer.email != 'guest@example.com'
+      @post = Post.find(params[:id])
+      if @post.customer_id == current_customer.id
+      else
+        redirect_to posts_path
+      end
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy

@@ -12,7 +12,13 @@
     </div>
 
     <h5 class="text-center mt-3">商品レビュー</h5>
+
+    <!--ゲストログイン時の機能制限のための確認-->
+    <% if current_customer.email == 'guest@example.com' %>
+      <p class="text-center mt-3">レビュー機能は会員登録をすることで利用できます</p>
+    <% else %>
       <%= render 'public/reviews/new', review: @review, item: @item %>
+    <% end %>
   </div>
 
   <div class="col-lg-6">
@@ -49,7 +55,7 @@
 
         <p class="col mt-2 text-right">
           投稿日時
-          <%= review.created_at.strftime("%Y_%m/%d_%H:%M") %>
+          <%= review.updated_at.strftime("%Y_%m/%d_%H:%M") %>
         </p>
       <% end %>
     <% else %>

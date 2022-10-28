@@ -18,6 +18,11 @@
       </div>
     </div>
 
+    <p class="col text-right mt-3">
+      投稿日時
+      <%= @review.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+    </p>
+
     <p class="row justify-content-center text-center mt-3">
       <strong>
         このレビューに関連する情報が完全に消去されます<br />
