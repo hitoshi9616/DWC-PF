@@ -49,6 +49,11 @@
       </div>
     </div>
 
+    <p class="col text-right mt-3">
+      投稿日時
+      <%= @review.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+    </p>
+
     <div class="col text-center mt-4">
       <%= link_to "削除画面へ", admin_review_confirm_path(@review.id), class:"btn btn-danger" %>
     </div>

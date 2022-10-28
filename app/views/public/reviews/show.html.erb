@@ -69,6 +69,11 @@
         </div>
       </div>
 
+      <p class="col text-right mt-3">
+        投稿日時
+        <%= @review.updated_at.strftime("%Y_%m/%d_%H:%M") %>
+      </p>
+
       <% if @review.customer_id == current_customer.id %>
         <div class="row col-lg-10 text-center mt-4 mx-auto">
           <%= link_to "編集画面へ", edit_review_path(@review.id), class:"btn btn-primary col-lg-3 m-auto" %>

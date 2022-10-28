@@ -21,6 +21,11 @@
       </div>
     </div>
 
+    <p class="col text-right mt-3">
+      投稿日時
+      <%= @post.created_at.strftime("%Y_%m/%d_%H:%M") %>
+    </p>
+
     <% if @post.customer.id == current_customer.id %>
       <div class="col text-center mt-4">
         <%= link_to "削除画面へ", post_confirm_path(@post.id), class:"btn btn-outline-danger" %>

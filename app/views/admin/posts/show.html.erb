@@ -8,11 +8,6 @@
       <% end %>
     </h5>
 
-    <p class="col text-center mt-3">
-      投稿日時
-      <%= @post.created_at.strftime("%Y_%m/%d_%H:%M") %>
-    </p>
-
     <div class="card">
       <h6 class="card-title p-1">
         タイトル：<strong><%= @post.title %></strong>
@@ -22,6 +17,11 @@
         <p class="p-1"><%= @post.text %></p>
       </div>
     </div>
+
+    <p class="col text-right mt-3">
+      投稿日時
+      <%= @post.created_at.strftime("%Y_%m/%d_%H:%M") %>
+    </p>
 
     <div class="col text-center mt-4">
       <%= link_to "削除画面へ", admin_post_confirm_path(@post.id), class:"btn btn-danger" %>
