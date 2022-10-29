@@ -40,9 +40,11 @@
           <%= link_to "会員情報詳細 / 編集", edit_customer_path, class:"btn btn-primary mb-3" %>
         </div>
 
+        <% if @genres.count >= 1 %>
         <div>
           <%= link_to "投稿画面へ", new_post_path, class:"btn btn-success mb-3" %>
         </div>
+        <% end %>
       </div>
       <% end %>
     <% end %>

@@ -5,7 +5,10 @@
   <div class="row mt-3">
     <h2 class="col-lg-5">投稿一覧</h2>
 
-    <p class="col-lg-5 ml-3"><%= link_to "新規投稿画面へ", new_post_path, class:"btn btn-success" %></p>
+
+    <% if @genres.count >= 1 %>
+      <p class="col-lg-5 ml-3"><%= link_to "新規投稿画面へ", new_post_path, class:"btn btn-success" %></p>
+    <% end %>
   </div>
 <% end %>
 

@@ -4,6 +4,7 @@ class Public::PostsController < ApplicationController
 
   def new
     if current_customer.email != 'guest@example.com'
+      @genres = Genre.all
       @post = Post.new
     else
       redirect_back(fallback_location: root_path)
@@ -23,6 +24,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order('created_at DESC')
+    @genres = Genre.all
   end
 
   def show

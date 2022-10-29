@@ -10,6 +10,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @reviews = Review.where(customer_id: @customer.id).order('updated_at DESC').limit(1)
     @posts = Post.where(customer_id: @customer.id).order('created_at DESC').limit(1)
+    @genres = Genre.all
   end
 
   def edit
