@@ -27,19 +27,7 @@
 
         <div class="row col text-right">
           評価：
-          <%# ★で評価するための記述 %>
-          <div id="star<%= @review.id %>"></div>
-          <script>
-            $('#star<%= @review.id %>').empty();
-            $('#star<%= @review.id %>').raty({
-              size: 36,
-              starOff: '<%= asset_path('star-off.png') %>',
-              starOn: '<%= asset_path('star-on.png') %>',
-              half: false,
-              readOnly: true,
-              score:<%= @review.evaluation %>
-            });
-          </script>
+          <%= render 'admin/reviews/star', review: @review %>
         </div>
       </div>
 

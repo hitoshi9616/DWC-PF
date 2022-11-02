@@ -13,6 +13,11 @@
         タイトル：<strong><%= @review.title %></strong>
       </h6>
 
+      <div class="row p-1">
+        <p class="ml-3">評価：</p>
+        <%= render 'admin/reviews/star', review: @review %>
+      </div>
+
       <div class="card-text p-2"><strong>内容</strong>
         <p class="p-1"><%= @review.text %></p>
       </div>

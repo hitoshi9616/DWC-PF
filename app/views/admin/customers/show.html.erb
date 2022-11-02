@@ -128,19 +128,7 @@
             商品名：<%= @reviews.first.item.name %>
           </h6>
 
-          <%# ★で評価するための記述 %>
-          <div class="col" id="star<%= @reviews.first.id %>"></div>
-            <script>
-              $('#star<%= @reviews.first.id %>').empty();
-              $('#star<%= @reviews.first.id %>').raty({
-                size: 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                half: false,
-                readOnly: true,
-                score:<%= @reviews.first.evaluation %>
-              });
-            </script>
+          <%= render 'admin/reviews/star', review: @reviews.first %>
 
           <p class="card-text mt-2">
             <%= @reviews.first.text %>
