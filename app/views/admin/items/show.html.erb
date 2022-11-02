@@ -28,21 +28,8 @@
               <strong><%= review.title %></strong>
             <% end %>
           </div>
-          <%# ★で評価するための記述 %>
           <div class="row col-lg-6 offset-lg-1">
-            評価：
-            <div id="star<%= review.id %>"></div>
-            <script>
-              $('#star<%= review.id %>').empty();
-              $('#star<%= review.id %>').raty({
-                size: 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                half: false,
-                readOnly: true,
-                score:<%= review.evaluation %>
-              });
-            </script>
+            評価：<%= render 'admin/reviews/star', review: review %>
           </div>
 
           <%= link_to admin_customer_path(review.customer_id) do %>
