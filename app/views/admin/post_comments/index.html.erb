@@ -7,6 +7,7 @@
         <th>投稿者</th>
         <th>コメント先</th>
         <th>内容</th>
+        <th>感情分析スコア</th>
         <th>コメント年_日_時</th>
         <th></th>
       </tr>
@@ -22,6 +23,7 @@
             <% end %>
           </td>
           <td><%= comment.comment %></td>
+          <td><%= comment.score %></td>
           <td><%= comment.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
           <td><%= link_to "コメント削除", admin_post_comment_path(comment.id), method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "このコメントを削除しますか？" %></td>
         </tr>

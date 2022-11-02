@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    #@post.score = Language.get_data(post_params[:text])
+    @post.score = Language.get_data(post_params[:text])
     if @post.save
       redirect_to post_path(@post.id)
     else
