@@ -92,9 +92,15 @@
   <div class="row col-lg-6 offset-1">
     <%# 会員の最新投稿 %>
     <div class="col-lg-12">
-      <h5 class="col">最新の投稿</h5>
-
       <% if @posts.first != nil %>
+        <div class="row">
+        <h5 class="col-lg-5">最新の投稿</h5>
+
+        <%= link_to admin_customer_posts_path(@customer), class:"col-lg-7" do %>
+          <p class="btn btn-outline-info btn-sm text-dark">この会員の投稿一覧へ</p>
+        <% end %>
+        </div>
+
         <div class="col card p-2">
           <h6 class="card-title">
             <%= link_to admin_post_path(@posts.first), class:"text-dark" do %>
@@ -118,9 +124,15 @@
 
     <%# 会員の最新レビュー %>
     <div class="col-lg-12">
-      <h5 class="col mt-4">最新のレビュー</h5>
-
       <% if @reviews.first != nil %>
+        <div class="row">
+          <h5 class="col-lg-5">最新のレビュー</h5>
+
+          <%= link_to admin_customer_reviews_path(@customer),class:"col-lg-7" do %>
+            <p class="btn btn-outline-info btn-sm text-dark">この会員のレビュー一覧へ</p>
+          <% end %>
+        </div>
+
         <div class="col card p-2">
           <h6 class="card-title">
             <%= link_to admin_review_path(@reviews.first), class:"text-dark" do %>
