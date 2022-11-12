@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get "customers/:id/reviews" => "customers#review", as: "customer/reviews"
+    get "customers/:id/posts" => "customers#post", as: "customer/posts"
     resources :customers
     resources :genres
     get "item/confirm/:id" => "items#confirm", as: "item/confirm"

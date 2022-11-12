@@ -1,0 +1,42 @@
+<div class="row mt-3">
+  <h2 class="col-lg-5"><%= @customer.nickname %>さんのレビュー一覧</h2>
+</div>
+
+<% if @reviews.count >= 1 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>評価</th>
+        <th>商品</th>
+        <th>コメント数</th>
+        <th>投稿年_日_時</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to admin_review_path(review.id), class:"text-dark" do %>
+              <%= review.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= render 'admin/reviews/star', review: review %>
+          </td>
+          <td>
+            <%= link_to admin_item_path(review.item_id), class:"text-dark" do %>
+              <%= image_tag review.item.get_image(50, 50) %>
+              <%= review.item.name %>
+            <% end %>
+          </td>
+          <td><%= review.review_comments.count %></td>
+          <td><%= review.updated_at.strftime("%Y_%m/%d_%H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h4>レビューはありません</h4>
+<% end %>

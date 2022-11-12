@@ -1,0 +1,47 @@
+<div class="row mt-3">
+  <h2 class="col-lg-5"><%= @customer.nickname %>さんの投稿一覧</h2>
+</div>
+
+<% if @posts.count >= 1 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>投稿の種類</th>
+        <th>タイトル</th>
+        <th>分析スコア</th>
+        <th>コメント数</th>
+        <th>投稿年_日_時</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.genre.genre %></td>
+        <td>
+          <%= link_to admin_post_path(post.id), class:"text-dark" do %>
+            <%= post.title %>
+          <% end %>
+        </td>
+        <td>
+          <% if post.score != nil %>
+            <strong>
+            <% if post.score >= 0.4 %>
+              <span class="text-success"><%= post.score %></span>
+            <% elsif post.score <= -0.4 %>
+              <span class="text-danger"><%= post.score %></span>
+            <% else %>
+              <%= post.score %>
+            <% end %>
+            </strong>
+          <% end %>
+        </td>
+        <td><%= post.post_comments.count %></td>
+        <td><%= post.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h4>投稿はありません</h4>
+<% end %>

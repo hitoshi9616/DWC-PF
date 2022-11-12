@@ -25,6 +25,16 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
+  def review
+    @customer = Customer.find(params[:id])
+    @reviews = Review.where(customer_id: @customer.id).order('updated_at DESC')
+  end
+
+  def post
+    @customer = Customer.find(params[:id])
+    @posts = Post.where(customer_id: @customer.id).order('created_at DESC')
+  end
+
   private
 
   def customer_params

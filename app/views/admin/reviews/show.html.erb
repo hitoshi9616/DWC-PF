@@ -63,7 +63,7 @@
                 <%= review_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
               </div>
 
-              <%= link_to "コメント削除", admin_review_comment_path(review_comment.id), method: :delete, class:"btn btn-danger col","data-confirm" => "このコメントを削除しますか？" %>
+              <%= link_to "コメント削除", admin_review_comment_path(review_comment.id), method: :delete, class:"btn btn-outline-danger col","data-confirm" => "このコメントを削除しますか？" %>
             </div>
 
             <p class="card-tect p-1"><%= review_comment.comment %></p>
