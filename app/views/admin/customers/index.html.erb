@@ -3,35 +3,35 @@
 <table class="table mt-3">
   <thead>
     <tr>
-      <th>ニックネーム</th>
-      <th>投稿数</th>
-      <th>レビュー数</th>
-      <th>会員ステータス</th>
+      <th class="col-lg-4 col-md-4 col-sm-3">ニックネーム</th>
+      <th class="col-lg-2 col-md-2 col-sm-2">投稿数</th>
+      <th class="col-lg-3 col-md-3 col-sm-3">レビュー数</th>
+      <th class="col-lg-3 col-md-3 col-sm-4">会員ステータス</th>
     </tr>
   </thead>
 
   <% @customers.each do |customer| %>
   <tbody>
     <tr>
-      <td>
-        <%= link_to admin_customer_path(customer.id), class:"text-dark" do %>
+      <td class="col-lg-4 col-md-4 col-sm-3">
+        <%= link_to admin_customer_path(customer), class:"text-dark" do %>
           <%= customer.nickname %>
         <% end %>
       </td>
-      <td>
-        <%= link_to admin_posts_path, class:"text-dark" do %>
+      <td class="col-lg-2 col-md-2 col-sm-2">
+        <%= link_to admin_customer_posts_path(customer), class:"text-dark" do %>
           <%= customer.posts.count %>
         <% end %>
       </td>
-      <td>
-        <%= link_to admin_reviews_path, class:"text-dark" do %>
+      <td class="col-lg-3 col-md-3 col-sm-3">
+        <%= link_to admin_customer_reviews_path(customer), class:"text-dark" do %>
           <%= customer.reviews.count %>
         <% end %>
       </td>
       <% if customer.is_deleted == false %>
-        <td>有効</td>
+        <td class="col-lg-3 col-md-3 col-sm-4">有効</td>
       <% else %>
-        <td>退会</td>
+        <td class="col-lg-3 col-md-3 col-sm-4">退会</td>
       <% end %>
     </tr>
   </tbody>
