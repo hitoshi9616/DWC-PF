@@ -74,13 +74,23 @@
       <div class="row">
         <p class="col-lg-5 col-md-5 text-right">ステータス</p>
         <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-3">
-          <% if @customer.is_deleted == false %>
-            有効
-          <% else %>
-            無効
-          <% end %>
-        </p>
+        <% if @customer.is_deleted == false %>
+          <p class="col-lg-6 col-md-3 text-success">有効</p>
+        <% else %>
+          <p class="col-lg-6 col-md-3 text-danger">無効</p>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <p class="col-lg-5 col-md-5 text-right">登録年/日</p>
+        <p class="col-lg-1 col-md-1">：</p>
+        <p class="col-lg-6 col-md-4"><%= @customer.created_at.strftime("%Y/%m/%d") %></p>
+      </div>
+
+      <div class="row">
+        <p class="col-lg-5 col-md-5 text-right">更新年/日</p>
+        <p class="col-lg-1 col-md-1">：</p>
+        <p class="col-lg-6 col-md-4"><%= @customer.updated_at.strftime("%Y/%m/%d") %></p>
       </div>
 
       <div class="col text-center">

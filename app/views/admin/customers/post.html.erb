@@ -6,24 +6,24 @@
   <table class="table">
     <thead>
       <tr>
-        <th>投稿の種類</th>
-        <th>タイトル</th>
-        <th>分析スコア</th>
-        <th>コメント数</th>
-        <th>投稿年_日</th>
+        <th class="col-lg-2 col-md-2 col-sm-3">投稿の種類</th>
+        <th class="col-lg-3 col-md-4 col-sm-3">タイトル</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">分析スコア</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">コメント数</th>
+        <th class="col-lg-3 col-md-2 col-sm-2">投稿年_日</th>
       </tr>
     </thead>
 
     <tbody>
       <% @posts.each do |post| %>
       <tr>
-        <td><%= post.genre.genre %></td>
-        <td>
-          <%= link_to admin_post_path(post.id), class:"text-dark omit" do %>
+        <td class="col-lg-2 col-md-2 col-sm-3 omit"><%= post.genre.genre %></td>
+        <td class="col-lg-3 col-md-3 col-sm-3">
+          <%= link_to admin_post_path(post.id), class:"text-dark" do %>
             <%= post.title %>
           <% end %>
         </td>
-        <td>
+        <td class="col-lg-2 col-md-2 col-sm-2">
           <% if post.score != nil %>
             <strong>
             <% if post.score >= 0.4 %>
@@ -36,8 +36,8 @@
             </strong>
           <% end %>
         </td>
-        <td><%= post.post_comments.count %></td>
-        <td><%= post.created_at.strftime("%Y_%m/%d") %></td>
+        <td class="col-lg-2 col-md-2 col-sm-2"><%= post.post_comments.count %></td>
+        <td class="col-lg-3 col-md-2 col-sm-2"><%= post.created_at.strftime("%Y_%m/%d") %></td>
       </tr>
       <% end %>
     </tbody>

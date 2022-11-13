@@ -8,12 +8,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th>タイトル</th>
-        <th>評価</th>
-        <th>商品</th>
-        <th>投稿者</th>
-        <th>コメント数</th>
-        <th>投稿年_日_時</th>
+        <th class="col-lg-2 col-md-3 col-sm-3">タイトル</th>
+        <th class="col-lg-2 col-md-3 col-sm-3">評価</th>
+        <th class="col-lg-3 col-md-2 col-sm-2">商品</th>
+        <th class="col-lg-2">投稿者</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">コメント数</th>
+        <th class="col-lg-1 col-md-2 col-sm-2">投稿年_日</th>
       </tr>
     </thead>
 
@@ -25,13 +25,15 @@
               <%= review.title %>
             <% end %>
           </td>
-          <td>
+          <td nowrap>
             <%= render 'admin/reviews/star', review: review %>
           </td>
           <td>
             <%= link_to admin_item_path(review.item_id), class:"text-dark" do %>
               <%= image_tag review.item.get_image(50, 50) %>
-              <%= review.item.name %>
+              <span>
+                <%= review.item.name.truncate(5, separator: "...") %>
+              </span>
             <% end %>
           </td>
           <td>
@@ -40,7 +42,7 @@
             <% end %>
           </td>
           <td><%= review.review_comments.count %></td>
-          <td><%= review.updated_at.strftime("%Y_%m/%d_%H:%M") %></td>
+          <td><%= review.updated_at.strftime("%Y_%m/%d") %></td>
         </tr>
       <% end %>
     </tbody>
