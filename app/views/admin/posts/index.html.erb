@@ -1,18 +1,19 @@
 <div class="row mt-3">
-  <h2 class="col-lg-5">投稿一覧</h2>
-  <p class="col-lg-5 ml-3"><%= link_to "投稿コメント一覧へ", admin_post_comments_path, class:"btn btn-info" %></p>
+  <h2 class="col-lg-5 col-md-5 col-sm-5">投稿一覧</h2>
+
+  <p class="col-lg-5 col-md-5 col-sm-5 ml-3"><%= link_to "投稿コメント一覧へ", admin_post_comments_path, class:"btn btn-info" %></p>
 </div>
 
 <% if @posts.count >= 1 %>
   <table class="table">
     <thead>
       <tr>
-        <th>投稿の種類</th>
-        <th>タイトル</th>
-        <th>分析スコア</th>
-        <th>投稿者</th>
-        <th>コメント数</th>
-        <th>投稿年_日_時</th>
+        <th class="col-lg-2 col-md-3 col-sm-2">投稿の種類</th>
+        <th class="col-lg-3 col-md-2 col-sm-3">タイトル</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">分析スコア</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">投稿者</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">コメント数</th>
+        <th class="col-lg-1 col-md-1 col-sm-1">投稿年_日</th>
       </tr>
     </thead>
 
@@ -22,29 +23,19 @@
         <td><%= post.genre.genre %></td>
         <td>
           <%= link_to admin_post_path(post.id), class:"text-dark" do %>
-            <%= post.title %>
+            <%= post.title.truncate(10, separator: "...") %>
           <% end %>
         </td>
         <td>
-          <% if post.score != nil %>
-            <strong>
-            <% if post.score >= 0.4 %>
-              <span class="text-success"><%= post.score %></span>
-            <% elsif post.score <= -0.4 %>
-              <span class="text-danger"><%= post.score %></span>
-            <% else %>
-              <%= post.score %>
-            <% end %>
-            </strong>
-          <% end %>
+          <%= render 'admin/post_comments/comment_score', comment: post %>
         </td>
         <td>
           <%= link_to admin_customer_path(post.customer_id), class:"text-dark" do %>
-            <%= post.customer.nickname %>
+            <%= post.customer.nickname.truncate(8, separator: "...") %>
           <% end %>
         </td>
         <td><%= post.post_comments.count %></td>
-        <td><%= post.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
+        <td><%= post.created_at.strftime("%Y_%m/%d") %></td>
       </tr>
       <% end %>
     </tbody>
