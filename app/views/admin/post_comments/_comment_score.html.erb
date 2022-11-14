@@ -1,0 +1,13 @@
+<% if comment.score != nil %>
+  <strong>
+  <% if comment.score >= 0.4 %>
+    <span class="text-success"><%= comment.score %></span>
+  <% elsif comment.score <= -0.4 %>
+    <span class="text-danger"><%= comment.score %></span>
+  <% else %>
+    <%= comment.score %>
+  <% end %>
+  </strong>
+<% else %>
+  --
+<% end %>

@@ -2,42 +2,27 @@
 
 <% if @post_comments.count >= 1 %>
   <table class="table mt-3">
-    <thead>
-      <tr>
-        <th>投稿者</th>
-        <th>コメント先</th>
-        <th>内容</th>
-        <th>分析スコア</th>
-        <th>コメント年_日_時</th>
-        <th></th>
-      </tr>
-    </thead>
-
+    <%= render 'admin/post_comments/comment_thead' %>
+    
     <tbody>
       <% @post_comments.each do |comment| %>
         <tr>
-          <td><%= comment.customer.nickname %></td>
+          <td>
+            <%= link_to admin_customer_path(comment.customer_id), class:"text-dark" do %>
+              <%= comment.customer.nickname.truncate(8, separator: "...") %>
+            <% end %>
+          </td>
           <td>
             <%= link_to admin_post_path(comment.post_id), class:"text-dark" do %>
-              <%= comment.post.title %>
+              <%= comment.post.title.truncate(8, separator: "...") %>
             <% end %>
           </td>
           <td><%= comment.comment %></td>
           <td>
-            <% if comment.score != nil %>
-              <strong>
-              <% if comment.score >= 0.4 %>
-                <span class="text-success"><%= comment.score %></span>
-              <% elsif comment.score <= -0.4 %>
-                <span class="text-danger"><%= comment.score %></span>
-              <% else %>
-                <%= comment.score %>
-              <% end %>
-              </strong>
-            <% end %>
+            <%= render 'comment_score', comment: comment %>
           </td>
           <td><%= comment.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
-          <td><%= link_to "コメント削除", admin_post_comment_path(comment.id), method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "このコメントを削除しますか？" %></td>
+          <td><%= link_to "削除", admin_post_comment_path(comment.id), method: :delete, class:"btn btn-danger btn-sm", "data-confirm" => "このコメントを削除しますか？" %></td>
         </tr>
       <% end %>
     </tbody>
