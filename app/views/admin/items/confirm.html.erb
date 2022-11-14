@@ -3,11 +3,11 @@
 </h2>
 
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-4 col-md-4 col-sm-12 text-center mb-3">
     <%= image_tag @item.get_image(300, 300) %>
   </div>
 
-  <div class="col-lg-8">
+  <div class="col-lg-8 col-md-8 col-sm-12">
     <h4 class="text-center">
       商品名：<%= @item.name %>
     </h4>
@@ -20,8 +20,8 @@
       紹介文
     </h5>
 
-    <div class="card col-lg-8 mx-auto p-2">
-      <p class="card-text">
+    <div class="p-2">
+      <p class="text-center">
         <%= @item.introduction %>
       </p>
     </div>

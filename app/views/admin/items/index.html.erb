@@ -1,12 +1,12 @@
 <div class="row">
-  <h2 class="col-lg-8 mt-3">商品一覧</h2>
+  <h2 class="col-lg-8 col-md-8 col-sm-8 mt-3">商品一覧</h2>
 
-  <h4 class="col-lg-4 mt-3">
+  <h4 class="col-lg-4 col-md-4 col-sm-4 mt-3">
     <%= link_to "商品登録", new_admin_item_path, class:"btn btn-success" %>
   </h4>
 
   <% @items.each do |item| %>
-    <div class="col-md-3 mt-3">
+    <div class="col-lg-2 col-md-3 col-sm-4 mt-3">
     <%= link_to admin_item_path(item.id) do %>
       <div class="card">
         <div class="img-siz">
