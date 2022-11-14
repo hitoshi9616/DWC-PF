@@ -19,7 +19,7 @@
         <tr>
           <td>
             <%= link_to admin_review_path(review.id), class:"text-dark omit" do %>
-              <%= review.title %>
+              <%= review.title.truncate(8, separator: "...") %>
             <% end %>
           </td>
           <td nowrap>
@@ -28,7 +28,7 @@
           <td>
             <%= link_to admin_item_path(review.item_id), class:"text-dark" do %>
               <%= image_tag review.item.get_image(50, 50) %>
-              <span><%= review.item.name.truncate(5, separator: "...") %></span>
+              <%= review.item.name.truncate(8, separator: "...") %>
             <% end %>
           </td>
           <td><%= review.review_comments.count %></td>

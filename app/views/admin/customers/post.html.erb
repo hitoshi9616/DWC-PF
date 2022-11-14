@@ -17,13 +17,13 @@
     <tbody>
       <% @posts.each do |post| %>
       <tr>
-        <td class="col-lg-2 col-md-2 col-sm-3 omit"><%= post.genre.genre %></td>
-        <td class="col-lg-3 col-md-3 col-sm-3">
+        <td nowrap><%= post.genre.genre %></td>
+        <td>
           <%= link_to admin_post_path(post.id), class:"text-dark" do %>
-            <%= post.title %>
+            <%= post.title.truncate(8, separator: "...") %>
           <% end %>
         </td>
-        <td class="col-lg-2 col-md-2 col-sm-2">
+        <td>
           <% if post.score != nil %>
             <strong>
             <% if post.score >= 0.4 %>
@@ -36,8 +36,8 @@
             </strong>
           <% end %>
         </td>
-        <td class="col-lg-2 col-md-2 col-sm-2"><%= post.post_comments.count %></td>
-        <td class="col-lg-3 col-md-2 col-sm-2"><%= post.created_at.strftime("%Y_%m/%d") %></td>
+        <td><%= post.post_comments.count %></td>
+        <td><%= post.created_at.strftime("%Y_%m/%d") %></td>
       </tr>
       <% end %>
     </tbody>
