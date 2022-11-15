@@ -3,7 +3,7 @@
 </h2>
 
 <div class="row">
-  <div class="col-lg-5">
+  <div class="col-lg-5 col-md-5 col-sm-12 mb-3">
     <h5 class="col text-center mt-2">
       投稿者：<strong><%= @review.customer.nickname %></strong>
     </h5>
@@ -41,25 +41,14 @@
     </div>
   </div>
 
-  <div class="col-lg-6 ml-2">
+  <div class="col-lg-6 col-md-6 col-sm-12 ml-2">
     <h5 class="text-center">
       コメント件数：<%= @review.review_comments.count %>
     </h5>
 
     <% if @review.review_comments.count >= 1 %>
       <% @review.review_comments.each do |review_comment| %>
-        <div class="card col mt-4">
-          <div class="row card-title border-bottom">
-            <div class="border-right col-lg-7 text-center pt-2">
-              <%= review_comment.customer.nickname %>
-            </div>
-
-            <div class="border-right col-lg-5 text-center p-2">
-              <%= review_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
-            </div>
-          </div>
-          <p class="card-text p-1"><%= review_comment.comment %></p>
-        </div>
+        <%= render 'admin/posts/confirm_comment', comment: review_comment %>
       <% end %>
     <% else %>
       <p class="text-center">このレビューに対するコメントはありません</p>

@@ -8,7 +8,20 @@
       投稿者：<strong><%= @post.customer.nickname %></strong>
     </h5>
 
-    <%= render 'post_comment_card', post: @post %>
+    <div class="card">
+      <h6 class="card-title p-1">
+        タイトル：<strong><%= @post.title %></strong>
+      </h6>
+
+      <div class="card-text p-2"><strong>内容</strong>
+        <p class="p-1"><%= @post.text %></p>
+      </div>
+    </div>
+
+    <p class="col text-right mt-3">
+      投稿日時
+      <%= @post.created_at.strftime("%Y_%m/%d_%H:%M") %>
+    </p>
 
     <p class="row justify-content-center text-center mt-3">
       <strong>
@@ -29,18 +42,7 @@
     </h5>
     <% if @post.post_comments.count >= 1 %>
       <% @post.post_comments.each do |post_comment| %>
-        <div class="card col mt-4">
-          <div class="row card-title border-bottom">
-            <div class="border col-lg-7 col-md-12 text-center pt-2">
-              <%= post_comment.customer.nickname %>
-            </div>
-
-            <div class="border col-lg-5 col-md-12 text-center p-2">
-              <%= post_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
-            </div>
-          </div>
-          <p class="card-text p-1"><%= post_comment.comment %></p>
-        </div>
+        <%= render 'confirm_comment', comment: post_comment %>
       <% end %>
     <% else %>
       <p class="text-center">この投稿に対するコメントはありません</p>
