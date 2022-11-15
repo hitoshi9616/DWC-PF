@@ -1,28 +1,25 @@
-<div class="container">
+<h2 class="col text-center mt-3">会員ログイン</h2>
 
-  <h2 class="col text-center mt-3">会員ログイン</h2>
-
-  <%= form_with model: @customer, url: customer_session_path do |f| %>
-    <div class="field text-center mt-3">
-      <%= f.label :"メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field text-center mt-3">
-      <%= f.label :"パスワード" %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions text-center mt-3">
-      <%= f.submit "ログイン", class:"btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <div class="text-center mt-4">
-    <%= link_to "新規登録の場合はこちら", new_customer_registration_path, class:"text-success" %>
+<%= form_with model: @customer, url: customer_session_path do |f| %>
+  <div class="field text-center mt-3">
+    <%= f.label :"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="text-center mt-4">
-    <%= link_to "登録せずに閲覧（ゲストログイン）", customers_guest_sign_in_path, class:"btn btn-secondary", method: :post %>
+  <div class="field text-center mt-3">
+    <%= f.label :"パスワード" %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
+
+  <div class="actions text-center mt-3">
+    <%= f.submit "ログイン", class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+<div class="text-center mt-4">
+  <%= link_to "新規登録の場合はこちら", new_customer_registration_path, class:"text-success" %>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to "登録せずに閲覧（ゲストログイン）", customers_guest_sign_in_path, class:"btn btn-secondary", method: :post %>
 </div>
