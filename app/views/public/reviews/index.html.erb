@@ -33,7 +33,7 @@
             <% end %>
           </td>
           <td><%= review.review_comments.count %></td>
-          <td><%= review.updated_at.strftime("%Y_%m/%d_%H:%M") %></td>
+          <td><%= review.updated_at.strftime("%Y_%m/%d") %></td>
         </tr>
       <% end %>
     </tbody>

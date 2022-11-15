@@ -3,11 +3,10 @@
   <h2 class="mt-3">投稿一覧</h2>
 <% else %>
   <div class="row mt-3">
-    <h2 class="col-lg-5">投稿一覧</h2>
-
+    <h2 class="col-lg-5 col-md-5 col-sm-5">投稿一覧</h2>
 
     <% if @genres.count >= 1 %>
-      <p class="col-lg-5 ml-3"><%= link_to "新規投稿画面へ", new_post_path, class:"btn btn-success" %></p>
+      <p class="col-lg-5 col-md-5 col-sm-5 ml-3"><%= link_to "新規投稿画面へ", new_post_path, class:"btn btn-success" %></p>
     <% end %>
   </div>
 <% end %>
@@ -16,11 +15,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th>投稿の種類</th>
-        <th>タイトル</th>
-        <th>投稿者</th>
-        <th>コメント数</th>
-        <th>投稿年_日_時</th>
+        <th class="col-lg-2 col-md-3 col-sm-3">投稿種類</th>
+        <th class="col-lg-3 col-md-3 col-sm-3">タイトル</th>
+        <th class="col-lg-3 col-md-3 col-sm-3">投稿者</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">コメント数</th>
+        <th class="col-lg-2 col-md-1 col-sm-1">投稿年_日</th>
       </tr>
     </thead>
 
@@ -30,16 +29,16 @@
           <td><%= post.genre.genre %></td>
           <td>
             <%= link_to post_path(post.id) do %>
-              <%= post.title %>
+              <%= post.title.truncate(10, separator: "...") %>
             <% end %>
           </td>
           <td>
             <%= link_to customer_path(post.customer_id) do %>
-              <%= post.customer.nickname %>
+              <%= post.customer.nickname.truncate(8, separator: "...") %>
             <% end %>
           </td>
           <td><%= post.post_comments.count %></td>
-          <td><%= post.created_at.strftime("%Y_%m/%d_%H:%M") %></td>
+          <td><%= post.created_at.strftime("%Y_%m/%d") %></td>
         </tr>
       <% end %>
     </tbody>

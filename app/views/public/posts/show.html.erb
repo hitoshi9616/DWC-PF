@@ -1,7 +1,7 @@
 <h2 class="mt-3">投稿詳細</h2>
 
 <div class="row">
-  <div class="col-lg-5">
+  <div class="col-lg-5 col-md-5 col-sm-12 mb-3">
     <h5 class="col text-center mt-2">
       投稿者：
       <%= link_to customer_path(@post.customer.id) do %>
@@ -9,26 +9,11 @@
       <% end %>
     </h5>
 
-    <div class="card">
-      <h6 class="card-title p-1">
-        タイトル：
-        <strong><%= @post.title %></strong>
-      </h6>
-
-      <div class="card-text p-2">
-        <strong>内容</strong>
-        <p class="p-1"><%= @post.text %></p>
-      </div>
-    </div>
-
-    <p class="col text-right mt-3">
-      投稿日時
-      <%= @post.created_at.strftime("%Y_%m/%d_%H:%M") %>
-    </p>
+    <%= render 'admin/posts/post_card', post: @post %>
 
     <% if @post.customer.id == current_customer.id %>
       <div class="col text-center mt-4">
-        <%= link_to "削除画面へ", post_confirm_path(@post.id), class:"btn btn-outline-danger" %>
+        <%= link_to "削除画面へ", post_confirm_path(@post.id), class:"btn btn-danger" %>
       </div>
     <% end %>
 
@@ -52,7 +37,7 @@
     <% end %>
   </div>
 
-  <div class="col-lg-6 ml-2">
+  <div class="col-lg-6 col-md-6 col-sm-12 ml-2">
     <h5 class="text-center">
       コメント件数：<%= @post.post_comments.count %>
     </h5>
@@ -61,16 +46,10 @@
       <% @post.post_comments.each do |post_comment| %>
         <div class="card col mt-4">
           <div class="row card-title border-bottom">
-            <div class="border-right col-lg-5 text-center pt-2">
-              <%= post_comment.customer.nickname %>
-            </div>
-
-            <div class="col-lg-4 text-center p-2">
-              <%= post_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
-            </div>
+            <%= render 'admin/posts/show_comment', comment: post_comment %>
 
             <% if post_comment.customer.id == current_customer.id %>
-              <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class:"btn btn-outline-danger col","data-confirm" => "このコメントを削除しますか？" %>
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class:"btn btn-outline-danger col","data-confirm" => "このコメントを削除しますか？" %>
             <% end %>
           </div>
 
