@@ -1,23 +1,28 @@
 <h2 class="mt-3">レビュー詳細</h2>
 
-<div class="row mb-3">
-  <div class="col-lg-4">
-    <h5 class="col text-center mt-3">レビュー商品</h5>
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+    <h5 class="col-lg-12 col-md-12 col-sm-12 text-center mt-3">レビュー商品</h5>
 
-    <%= link_to item_path(@review.item_id) do %>
-      <div class="card">
+    <div class="card">
+      <%= link_to item_path(@review.item_id) do %>
         <%= image_tag @review.item.get_image(200, 200), class:"card-img-top" %>
-        <div class="p-2">
-          <p><%= @review.item.name %></p>
-          <p>価格：<%= @review.item.price %>円</p>
-          <p><%= @review.item.introduction %></p>
-        </div>
+      <% end %>
+
+      <div class="p-2">
+        <p><%= @review.item.name %></p>
+        <p>価格：<%= @review.item.price %>円</p>
+        <p><%= @review.item.introduction %></p>
       </div>
-    <% end %>
+    </div>
 
     <!--ゲストログイン時の機能制限のための確認-->
     <% if current_customer.email == 'guest@example.com' %>
-      <p class="text-center mt-3">コメント機能は会員登録をすることで<br />利用できます</p>
+      <p class="text-center mt-3">
+        コメント機能は<br />
+        会員登録をすることで<br />
+        利用できます
+      </p>
     <% else %>
       <%= form_with model: [@review, @review_comment] do |f| %>
         <h5 class="col text-center mt-3">
@@ -35,58 +40,23 @@
     <% end %>
   </div>
 
-  <div class="col-lg-7 ml-2">
-    <h5 class="col text-center mt-2">
+  <div class="col-lg-7 col-md-7 col-sm-12 ml-2">
+    <h5 class="col text-center mt-3">
       投稿者：
       <%= link_to admin_customer_path(@review.customer.id) do %>
         <strong><%= @review.customer.nickname %></strong>
       <% end %>
     </h5>
 
-    <div class="row">
-      <div class="col-lg-12 card">
-        <div class="row">
-          <div class="col card-title p-1">
-            タイトル：
-            <strong><%= @review.title %></strong>
-          </div>
+    <%= render 'admin/reviews/review_card', review: @review %>
 
-          <div class="row col text-right">
-            評価：
-            <%# ★で評価するための記述 %>
-            <div id="star<%= @review.id %>"></div>
-            <script>
-              $('#star<%= @review.id %>').empty();
-              $('#star<%= @review.id %>').raty({
-                size: 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                half: false,
-                readOnly: true,
-                score:<%= @review.evaluation %>
-              });
-            </script>
-          </div>
-        </div>
+    <% if @review.customer_id == current_customer.id %>
+      <div class="row col-lg-10 col-md-12 col-sm-10 text-center mt-4 mx-auto">
+        <%= link_to "編集画面へ", edit_review_path(@review.id), class:"btn btn-primary col-lg-4 col-md-4 col-sm-4 m-auto" %>
 
-        <div class="card-text p-2"><strong>内容</strong>
-          <p class="p-1"><%= @review.text %></p>
-        </div>
+        <%= link_to "削除画面へ", review_confirm_path(@review.id), class:"btn btn-danger col-lg-4 col-md-4 col-sm-4 m-auto" %>
       </div>
-
-      <p class="col text-right mt-3">
-        投稿日時
-        <%= @review.updated_at.strftime("%Y_%m/%d_%H:%M") %>
-      </p>
-
-      <% if @review.customer_id == current_customer.id %>
-        <div class="row col-lg-10 text-center mt-4 mx-auto">
-          <%= link_to "編集画面へ", edit_review_path(@review.id), class:"btn btn-primary col-lg-3 m-auto" %>
-
-          <%= link_to "削除画面へ", review_confirm_path(@review.id), class:"btn btn-danger col-lg-3 m-auto" %>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
 
     <div class="mt-5">
       <h5 class="text-center">
@@ -97,13 +67,7 @@
         <% @review.review_comments.each do |review_comment| %>
           <div class="card col mt-4">
             <div class="row card-title border-bottom">
-              <div class="border-right col-lg-5 text-center pt-2">
-                <%= review_comment.customer.nickname %>
-              </div>
-
-              <div class="col-lg-4 text-center p-2">
-                <%= review_comment.created_at.strftime("%Y_%m/%d_%H:%M") %>
-              </div>
+              <%= render 'admin/posts/show_comment', comment: review_comment %>
 
               <% if review_comment.customer.id == current_customer.id %>
                 <%= link_to "コメント削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class:"btn btn-outline-danger col","data-confirm" => "このコメントを削除しますか？" %>

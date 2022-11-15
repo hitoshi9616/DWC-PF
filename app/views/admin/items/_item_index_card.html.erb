@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="img-siz">
+    <%= image_tag item.get_image(300, 300), class:"img-fit" %>
+  </div>
+
+  <div class="card-body">
+    <h6 class="card-title omit">
+      <%= item.name %>
+    </h6>
+
+    <p class="card-text">
+      <%= item.price %>円<br />
+      レビュー数：<%= item.review.count %>
+    </p>
+  </div>
+</div>

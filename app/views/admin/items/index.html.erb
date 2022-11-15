@@ -5,26 +5,19 @@
     <%= link_to "商品登録", new_admin_item_path, class:"btn btn-success" %>
   </h4>
 
-  <% @items.each do |item| %>
-    <div class="col-lg-2 col-md-3 col-sm-4 mt-3">
-    <%= link_to admin_item_path(item.id) do %>
-      <div class="card">
-        <div class="img-siz">
-          <%= image_tag item.get_image(400, 400), class:"img-fit" %>
-        </div>
-
-        <div class="card-body">
-          <h6 class="card-title omit">
-            <%= item.name %>
-          </h6>
-
-          <p class="card-text">
-            <%= item.price %>円<br />
-            レビュー数：<%= item.review.count %>
-          </p>
-        </div>
+  <% if @items.count >= 1 %>
+    <% @items.each do |item| %>
+      <div class="col-lg-2 col-md-3 col-sm-4 mt-3">
+        <%= link_to admin_item_path(item.id) do %>
+          <%= render 'admin/items/item_index_card', item: item %>
+        <% end %>
       </div>
     <% end %>
-    </div>
+  <% else %>
+    <h5 class="text-center mt-4">
+      商品が登録されていません<br />
+      上の<strong>商品登録</strong>ボタンをクリックして<br />
+      必要事項を入力し 商品登録してください
+    </h5>
   <% end %>
 </div>
