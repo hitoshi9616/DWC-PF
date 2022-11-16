@@ -16,6 +16,10 @@ class Public::CustomersController < ApplicationController
   def edit
     if current_customer.email != 'guest@example.com'
       @customer = Customer.find(params[:id])
+      if @customer == current_customer
+      else
+        redirect_to edit_customer_path(current_customer)
+      end
     else
       redirect_back(fallback_location: root_path)
     end

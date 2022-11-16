@@ -32,6 +32,10 @@ class Public::ReviewsController < ApplicationController
   def edit
     if current_customer.email != 'guest@example.com'
       @review = Review.find(params[:id])
+      if @review.customer_id == current_customer.id
+      else
+        redirect_to reviews_path
+      end
     else
       redirect_back(fallback_location: root_path)
     end
