@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-lg-5 col-md-5 col-sm-12 mb-3">
     <h5 class="col text-center mt-2">
-      投稿者：<strong><%= review.customer.nickname %></strong>
+      投稿者：<strong><%= @review.customer.nickname %></strong>
     </h5>
 
     <%= render 'review_confirm', review: @review %>
