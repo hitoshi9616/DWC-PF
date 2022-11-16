@@ -6,15 +6,9 @@
   <div class="col-lg-5 col-md-5 p-1 mb-3">
     <div class="border border-dark">
       <h5 class="text-center mt-2">会員情報</h5>
-      <% if @customer == current_customer %>
-        <p class="text-center mt-1">
-          ※他の方に公開されているのは<br />
-          ニックネーム<br />
-          投稿数・レビュー数のみです
-        </p>
 
-        <%= render 'admin/customers/show', customer: @customer %>
-      <% else %>
+      <!--ゲストログイン時の機能制限のための確認-->
+      <% if current_customer.email == 'guest@example.com' %>
         <div class="row mt-1">
           <p class="col-lg-4 col-md-6 col-sm-4 text-right">ニックネーム</p>
           <p class="col-lg-1 col-md-1 col-sm-1">：</p>
@@ -22,23 +16,57 @@
             <%= @customer.nickname %>
           </p>
         </div>
+
+        <div class="row">
+          <p class="col-lg-4 col-md-6 col-sm-4 text-right">投稿数</p>
+          <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+          <p class="col-lg-7 col-md-3 col-sm-7">
+            <%= @customer.posts.count %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="col-lg-4 col-md-6 col-sm-4 text-right">レビュー数</p>
+          <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+          <p class="col-lg-7 col-md-3 col-sm-7">
+            <%= @customer.reviews.count %>
+          </p>
+        </div>
+      <% else %>
+        <% if @customer == current_customer %>
+          <p class="text-center mt-1">
+            ※他の方に公開されているのは<br />
+            ニックネーム<br />
+            投稿数・レビュー数のみです
+          </p>
+
+          <%= render 'admin/customers/show', customer: @customer %>
+        <% else %>
+          <div class="row mt-1">
+            <p class="col-lg-4 col-md-6 col-sm-4 text-right">ニックネーム</p>
+            <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+            <p class="col-lg-7 col-md-12 col-sm-7">
+              <%= @customer.nickname %>
+            </p>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <p class="col-lg-4 col-md-6 col-sm-4 text-right">投稿数</p>
+          <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+          <p class="col-lg-7 col-md-3 col-sm-7">
+            <%= @customer.posts.count %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="col-lg-4 col-md-6 col-sm-4 text-right">レビュー数</p>
+          <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+          <p class="col-lg-7 col-md-3 col-sm-7">
+            <%= @customer.reviews.count %>
+          </p>
+        </div>
       <% end %>
-
-      <div class="row">
-        <p class="col-lg-4 col-md-6 col-sm-4 text-right">投稿数</p>
-        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
-        <p class="col-lg-7 col-md-3 col-sm-7">
-          <%= @customer.posts.count %>
-        </p>
-      </div>
-
-      <div class="row">
-        <p class="col-lg-4 col-md-6 col-sm-4 text-right">レビュー数</p>
-        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
-        <p class="col-lg-7 col-md-3 col-sm-7">
-          <%= @customer.reviews.count %>
-        </p>
-      </div>
 
     <!--ゲストログイン時の機能制限のための確認-->
     <% if current_customer.email == 'guest@example.com' %>
