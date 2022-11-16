@@ -1,0 +1,47 @@
+<div class="row mt-3">
+  <h2 class="col">
+    <%= link_to customer_path(@customer) do %>
+      <%= @customer.nickname %>
+    <% end %>
+    さんのレビュー一覧
+  </h2>
+</div>
+
+<% if @reviews.count >= 1 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-lg-2 col-md-3 col-sm-3">タイトル</th>
+        <th class="col-lg-2 col-md-3 col-sm-3">評価</th>
+        <th class="col-lg-3 col-md-2 col-sm-2">商品</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">コメント数</th>
+        <th class="col-lg-2 col-md-2 col-sm-2">投稿年_日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to review_path(review.id), class:"omit" do %>
+              <%= review.title.truncate(8, separator: "...") %>
+            <% end %>
+          </td>
+          <td nowrap>
+            <%= render 'admin/reviews/star', review: review %>
+          </td>
+          <td>
+            <%= link_to item_path(review.item_id) do %>
+              <%= image_tag review.item.get_image(50, 50) %>
+              <%= review.item.name.truncate(8, separator: "...") %>
+            <% end %>
+          </td>
+          <td><%= review.review_comments.count %></td>
+          <td><%= review.updated_at.strftime("%Y_%m/%d") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h5>レビューはありません</h5>
+<% end %>

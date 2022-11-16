@@ -1,32 +1,41 @@
-<h2 class="row col-lg-12 justify-content-center mt-3">
+<h2 class="row col justify-content-center mt-3">
   <%= @customer.nickname %>さんのページ
 </h2>
 
-<div class="row col-lg-12 mt-4">
-  <div class="col-lg-5 p-1">
+<div class="row mt-4">
+  <div class="col-lg-5 col-md-5 p-1 mb-3">
     <div class="border border-dark">
       <h5 class="text-center mt-2">会員情報</h5>
-
-      <div class="row">
-        <p class="col-lg-5 text-right">ニックネーム</p>
-        <p class="col-lg-1">：</p>
-        <p class="col-lg-6">
-          <%= @customer.nickname %>
+      <% if @customer == current_customer %>
+        <p class="text-center mt-1">
+          ※他の方に公開されているのは<br />
+          ニックネーム<br />
+          投稿数・レビュー数のみです
         </p>
-      </div>
+
+        <%= render 'admin/customers/show', customer: @customer %>
+      <% else %>
+        <div class="row mt-1">
+          <p class="col-lg-4 col-md-6 col-sm-4 text-right">ニックネーム</p>
+          <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+          <p class="col-lg-7 col-md-12 col-sm-7">
+            <%= @customer.nickname %>
+          </p>
+        </div>
+      <% end %>
 
       <div class="row">
-        <p class="col-lg-5 text-right">投稿数</p>
-        <p class="col-lg-1">：</p>
-        <p class="col-lg-6">
+        <p class="col-lg-4 col-md-6 col-sm-4 text-right">投稿数</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+        <p class="col-lg-7 col-md-3 col-sm-7">
           <%= @customer.posts.count %>
         </p>
       </div>
 
       <div class="row">
-        <p class="col-lg-5 text-right">レビュー数</p>
-        <p class="col-lg-1">：</p>
-        <p class="col-lg-6">
+        <p class="col-lg-4 col-md-6 col-sm-4 text-right">レビュー数</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+        <p class="col-lg-7 col-md-3 col-sm-7">
           <%= @customer.reviews.count %>
         </p>
       </div>
@@ -37,7 +46,7 @@
       <% if @customer.id == current_customer.id %>
       <div class="col text-center">
         <div>
-          <%= link_to "会員情報詳細 / 編集", edit_customer_path, class:"btn btn-primary mb-3" %>
+          <%= link_to "会員情報編集", edit_customer_path, class:"btn btn-primary mb-3" %>
         </div>
 
         <% if @genres.count >= 1 %>
@@ -51,13 +60,17 @@
     </div>
   </div>
 
-  <div class="row col-lg-6 offset-1">
-
-    <%# 会員の最新投稿 %>
-    <div class="col-lg-12">
-      <h5 class="col-lg-6">最新の投稿</h5>
-
+  <div class="row col-lg-6 col-md-6 ml-3">
+    <div class="col-lg-12 col-md-12 col-sm-12">
       <% if @posts.first != nil %>
+        <div class="row">
+          <h5 class="col-lg-5 col-md-12 col-sm-5">最新の投稿</h5>
+
+          <%= link_to customer_posts_path(@customer), class:"col-lg-7 col-md-12 col-sm-7" do %>
+            <p class="btn btn-outline-info btn-sm text-dark">この会員の投稿一覧へ</p>
+          <% end %>
+        </div>
+
         <div class="col card p-2">
           <h6 class="card-title">
             <strong>
@@ -81,11 +94,16 @@
       <% end %>
     </div>
 
-    <%# 会員の最新レビュー %>
-    <div class="col-lg-12">
-      <h5 class="col mt-4">最新のレビュー</h5>
-
+    <div class="col-lg-12 col-md-12 col-sm-12">
       <% if @reviews.first != nil %>
+        <div class="row">
+          <h5 class="col-lg-5 col-md-12 col-sm-5">最新のレビュー</h5>
+
+          <%= link_to customer_reviews_path(@customer),class:"col-lg-7 col-md-12 col-sm-7" do %>
+            <p class="btn btn-outline-info btn-sm text-dark">この会員のレビュー一覧へ</p>
+          <% end %>
+        </div>
+
         <div class="col card p-2">
           <h6 class="card-title">
             <strong>
@@ -95,26 +113,14 @@
             </strong>
           </h6>
 
-          <h6 class="card-subtitle">
+          <h6 class="card-subtitle mt-1 mb-1">
             商品名：
             <%= link_to item_path(@reviews.first.item_id) do %>
               <%= @reviews.first.item.name %>
             <% end %>
           </h6>
 
-          <%# ★で評価するための記述 %>
-          <div class="col" id="star<%= @reviews.first.id %>"></div>
-            <script>
-              $('#star<%= @reviews.first.id %>').empty();
-              $('#star<%= @reviews.first.id %>').raty({
-                size: 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                half: false,
-                readOnly: true,
-                score:<%= @reviews.first.evaluation %>
-              });
-            </script>
+          <%= render 'admin/reviews/star', review: @reviews.first %>
 
           <p class="card-text mt-2">
             <%= @reviews.first.text %>

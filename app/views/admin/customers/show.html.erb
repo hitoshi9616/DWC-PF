@@ -1,96 +1,54 @@
-<h2 class="row col-lg-12 justify-content-center mt-3">
+<h2 class="row col justify-content-center mt-3">
   <%= @customer.nickname %>さんのページ
 </h2>
 
-<div class="row col-lg-12 col-md-12 col-sm-12 mt-4">
+<div class="row mt-4">
   <div class="col-lg-5 col-md-5 p-3">
     <div class="border border-dark">
       <h5 class="text-center mt-2">会員情報</h5>
 
-      <div class="row mt-3">
-        <p class="col-lg-5 col-md-5 text-right">名前</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-12">
-          <%= @customer.last_name %>
-          <%= " " %>
-          <%= @customer.first_name %>
-        </p>
-      </div>
+      <%= render 'show', customer: @customer %>
 
       <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">フリガナ</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-12">
-          <%= @customer.last_name_kana %>
-          <%= " " %>
-          <%= @customer.first_name_kana %>
-        </p>
-      </div>
-
-      <div class="row">
-        <p class="col-lg-5 col-md-6 text-right">ニックネーム</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-12">
-          <%= @customer.nickname %>
-        </p>
-      </div>
-
-      <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">電話番号</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-12">
-          <%= @customer.phone_number %>
-        </p>
-      </div>
-
-      <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">年齢</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-3">
-          <%= @customer.age %>
-        </p>
-      </div>
-
-      <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">投稿数</p>
-        <p class="col-lg-1 col-md-1">：</p>
+        <p class="col-lg-4 col-md-6 col-sm-4 text-right">投稿数</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
         <%= link_to admin_customer_posts_path(@customer), class:"text-dark" do %>
-          <p class="col-lg-6 col-md-3">
+          <p class="col-lg-7 col-md-3 col-sm-7">
             <%= @customer.posts.count %>
           </p>
         <% end %>
       </div>
 
       <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">レビュー数</p>
-        <p class="col-lg-1 col-md-1">：</p>
+        <p class="col-lg-4 col-md-6 col-sm-4 text-right">レビュー数</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
         <%= link_to admin_customer_reviews_path(@customer), class:"text-dark" do %>
-          <p class="col-lg-6 col-md-3">
+          <p class="col-lg-7 col-md-3 col-sm-7">
             <%= @customer.reviews.count %>
           </p>
         <% end %>
       </div>
 
       <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">ステータス</p>
-        <p class="col-lg-1 col-md-1">：</p>
+        <p class="col-lg-4 col-md-5 col-sm-4 text-right">ステータス</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
         <% if @customer.is_deleted == false %>
-          <p class="col-lg-6 col-md-3 text-success">有効</p>
+          <p class="col-lg-7 col-md-3 col-sm-7 text-success">有効</p>
         <% else %>
-          <p class="col-lg-6 col-md-3 text-danger">無効</p>
+          <p class="col-lg-7 col-md-3 col-sm-7 text-danger">無効</p>
         <% end %>
       </div>
 
       <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">登録年/日</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-4"><%= @customer.created_at.strftime("%Y/%m/%d") %></p>
+        <p class="col-lg-4 col-md-5 col-sm-5 text-right">登録年/日</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+        <p class="col-lg-7 col-md-4 col-sm-6"><%= @customer.created_at.strftime("%Y/%m/%d") %></p>
       </div>
 
       <div class="row">
-        <p class="col-lg-5 col-md-5 text-right">更新年/日</p>
-        <p class="col-lg-1 col-md-1">：</p>
-        <p class="col-lg-6 col-md-4"><%= @customer.updated_at.strftime("%Y/%m/%d") %></p>
+        <p class="col-lg-4 col-md-5 col-sm-5 text-right">更新年/日</p>
+        <p class="col-lg-1 col-md-1 col-sm-1">：</p>
+        <p class="col-lg-7 col-md-4 col-sm-6"><%= @customer.updated_at.strftime("%Y/%m/%d") %></p>
       </div>
 
       <div class="col text-center">
@@ -99,16 +57,15 @@
     </div>
   </div>
 
-  <div class="row col-lg-6 col-md-6 offset-1">
-    <%# 会員の最新投稿 %>
-    <div class="col-lg-12 col-md-12">
+  <div class="row col-lg-6 col-md-6 ml-3">
+    <div class="col-lg-12 col-md-12 col-sm-12">
       <% if @posts.first != nil %>
         <div class="row">
-        <h5 class="col-lg-5 col-md-12">最新の投稿</h5>
+          <h5 class="col-lg-5 col-md-12">最新の投稿</h5>
 
-        <%= link_to admin_customer_posts_path(@customer), class:"col-lg-7 col-md-12" do %>
-          <p class="btn btn-outline-info btn-sm text-dark">この会員の投稿一覧へ</p>
-        <% end %>
+          <%= link_to admin_customer_posts_path(@customer), class:"col-lg-7 col-md-12" do %>
+            <p class="btn btn-outline-info btn-sm text-dark">この会員の投稿一覧へ</p>
+          <% end %>
         </div>
 
         <div class="col card p-2">
@@ -132,7 +89,6 @@
       <% end %>
     </div>
 
-    <%# 会員の最新レビュー %>
     <div class="col-lg-12 col-md-12">
       <% if @reviews.first != nil %>
         <div class="row">

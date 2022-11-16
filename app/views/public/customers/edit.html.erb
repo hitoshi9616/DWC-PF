@@ -4,79 +4,79 @@
 
 <%= form_with model: @customer, url: customer_path(@customer), method: :patch, class:"mt-3" do |f| %>
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-7 text-right">
       <%= f.label "名前" %>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-4 col-sm-6">
       <%= f.label :last_name, "(姓)", class:"ml-3" %>
-      <%= f.text_field :last_name, :placeholder => "鈴木", autofocus: true %>
+      <%= f.text_field :last_name, :placeholder => "鈴木", autofocus: true, required: true %>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-4 col-sm-6">
       <%= f.label :first_name, "(名)", class:"ml-3" %>
-      <%= f.text_field :first_name, :placeholder => "一郎", autofocus: true %>
+      <%= f.text_field :first_name, :placeholder => "一郎", autofocus: true, required: true %>
     </div>
   </div>
 
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-7 text-right">
       <%= f.label "フリガナ" %>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-4 col-sm-6">
       <%= f.label :last_name_kana, "(セイ)" %>
-      <%= f.text_field :last_name_kana, :placeholder => "スズキ", autofocus: true %>
+      <%= f.text_field :last_name_kana, :placeholder => "スズキ", autofocus: true, required: true %>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-4 col-sm-6">
       <%= f.label :first_name_kana, "(メイ)" %>
-      <%= f.text_field :first_name_kana, :placeholder => "イチロウ", autofocus: true %>
+      <%= f.text_field :first_name_kana, :placeholder => "イチロウ", autofocus: true, required: true %>
     </div>
   </div>
 
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-5 text-right">
       <%= f.label :nickname, "ニックネーム" %>
     </div>
 
-    <div class="col-lg-6 ml-5">
-      <%= f.text_field :nickname, :placeholder => "イチロー", autofocus: true %>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <%= f.text_field :nickname, :placeholder => "イチロー", autofocus: true, required: true %><br />
       <%= f.label "※公開される名前になります" %>
     </div>
   </div>
 
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-5 text-right">
       <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
     </div>
 
-    <div class="col-lg-6 ml-5">
-      <%= f.text_field :phone_number, :placeholder => "09012345678", autofocus: true %>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <%= f.text_field :phone_number, :placeholder => "09012345678", autofocus: true, required: true %>
     </div>
   </div>
 
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-5 text-right">
       <%= f.label :age, "年齢" %>
     </div>
 
-    <div class="col-lg-6 ml-5">
-      <%= f.text_field :age, :placeholder => "25", autofocus: true %>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <%= f.text_field :age, :placeholder => "25", autofocus: true, required: true %>
     </div>
   </div>
 
   <div class="row field form-group">
-    <div class="col-lg-3 text-right">
+    <div class="col-lg-3 col-md-4 col-sm-5 text-right">
       <%= f.label :email, "メールアドレス" %>
     </div>
 
-    <div class="col-lg-6 ml-5">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <%= f.email_field :email, :placeholder => "sample@sample.com", autofocus: true, autocomplete: "email", required: true %>
     </div>
   </div>
 
-  <div class="mt-3">
-    <%= f.submit "編集完了", class:"btn btn-success col-lg-1 offset-4" %>
+  <div class="row col-lg-12 col-md-12 col-sm-12 justify-content-center mt-3">
+    <%= f.submit "編集完了", class:"btn btn-success" %>
   </div>
 <% end %>

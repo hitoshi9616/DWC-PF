@@ -6,12 +6,8 @@
 
 <% if @reviews.count >= 1 %>
   <table class="table">
-    <thead>
-      <tr>
-        <%= render 'review_thead' %>
-      </tr>
-    </thead>
-
+    <%= render 'review_thead' %>
+    
     <tbody>
       <% @reviews.each do |review| %>
         <tr>

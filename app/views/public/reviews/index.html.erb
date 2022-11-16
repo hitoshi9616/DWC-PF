@@ -4,11 +4,7 @@
 
 <% if @reviews.count >= 1 %>
   <table class="table">
-    <thead>
-      <tr>
-        <%= render 'admin/reviews/review_thead' %>
-      </tr>
-    </thead>
+    <%= render 'admin/reviews/review_thead' %>
 
     <tbody>
       <% @reviews.each do |review| %>

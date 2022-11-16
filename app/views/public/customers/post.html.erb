@@ -1,0 +1,38 @@
+<div class="row mt-3">
+  <h2 class="col">
+    <%= link_to customer_path(@customer) do %>
+      <%= @customer.nickname %>
+    <% end %>
+    さんの投稿一覧
+  </h2>
+</div>
+
+<% if @posts.count >= 1 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-lg-3 col-md-3 col-sm-3">投稿の種類</th>
+        <th class="col-lg-4 col-md-4 col-sm-4">タイトル</th>
+        <th class="col-lg-2 col-md-2 col-sm-3">コメント数</th>
+        <th class="col-lg-3 col-md-3 col-sm-2">投稿年_日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td nowrap><%= post.genre.genre %></td>
+        <td>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title.truncate(8, separator: "...") %>
+          <% end %>
+        </td>
+        <td><%= post.post_comments.count %></td>
+        <td><%= post.created_at.strftime("%Y_%m/%d") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h5>投稿はありません</h5>
+<% end %>

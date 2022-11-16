@@ -3,9 +3,9 @@
 <table class="table mt-3">
   <thead>
     <tr>
-      <th>ニックネーム</th>
-      <th>投稿数</th>
-      <th>レビュー数</th>
+      <th class="col-lg-6 col-md-6 col-sm-6">ニックネーム</th>
+      <th class="col-lg-3 col-md-3 col-sm-3">投稿数</th>
+      <th class="col-lg-3 col-md-3 col-sm-3">レビュー数</th>
     </tr>
   </thead>
 
@@ -13,18 +13,26 @@
     <tbody>
       <tr>
         <td>
-          <%= link_to customer_path(customer.id) do %>
-            <%= customer.nickname %>
+          <%= link_to customer_path(customer) do %>
+            <%= customer.nickname.truncate(10, separator: "...") %>
           <% end %>
         </td>
         <td>
-          <%= link_to posts_path do %>
+          <% if customer.posts.count >= 1 %>
+            <%= link_to customer_posts_path(customer) do %>
+              <%= customer.posts.count %>
+            <% end %>
+          <% else %>
             <%= customer.posts.count %>
           <% end %>
         </td>
         <td>
-          <%= link_to reviews_path do %>
-            <%= customer.reviews.count %>
+          <% if customer.reviews.count >= 1 %>
+            <%= link_to customer_reviews_path(customer) do %>
+              <%= customer.reviews.count %>
+            <% end %>
+          <% else %>
+            <%= customer.posts.count %>
           <% end %>
         </td>
       </tr>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get "homes/about" => "homes#about", as: "about"
+    get "customers/:id/reviews" => "customers#review", as: "customer/reviews"
+    get "customers/:id/posts" => "customers#post", as: "customer/posts"
     resources :customers
     resources :items
     #itemsに対してreviewsをネストしないのはレビュー一覧で全てのレビュー情報を表示するため
