@@ -6,17 +6,17 @@
     <%= f.file_field :image, accept: "image/*", required: true %>
   </div>
 
-  <div class="row form-group col-lg-8">
+  <div class="row form-group col-lg-8 col-md-11 col-sm-12">
     <%= f.label :name, "商品名", class:"mr-4" %>
     <%= f.text_field :name, required: true, class:"col-4 form-control" %>
   </div>
 
-  <div class="row form-group col-lg-8">
+  <div class="row form-group col-lg-8 col-md-10 col-sm-10">
     <%= f.label :introduction, "商品説明", class:"mr-2" %>
-    <%= f.text_area :introduction, required: true, class:"col-9 form-control" %>
+    <%= f.text_area :introduction, required: true, class:"col form-control" %>
   </div>
 
-  <div class="row form-group col-lg-8">
+  <div class="row form-group col-lg-8 col-md-10 col-sm-10">
     <%= f.label :price, "販売価格", class:"mr-2" %>
     <%= f.text_field :price, required: true, class:"col-2 form-control" %>円
   </div>
