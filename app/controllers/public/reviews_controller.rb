@@ -17,6 +17,7 @@ class Public::ReviewsController < ApplicationController
       redirect_to item_path(@review.item_id)
     else
       redirect_back(fallback_location: root_path)
+      # render item_path(@review.item_id)
     end
   end
 

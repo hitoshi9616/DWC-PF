@@ -9,15 +9,13 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  #validates :last_name, presence: true
-  #validates :first_name, presence: true
-  #validates :last_name_kana, presence: true
-  #validates :first_name_kana, presence: true
-  #validates :nickname, presence: true
-  #validates :phone_number, presence: true
-  #validates :age, presence: true
-  #validates :email, presence: true
-  #validates :encrypted_password, presence: true
+  validates :last_name, presence: true, length: { in: 1..50 }
+  validates :first_name, presence: true, length: { in: 1..50 }
+  validates :last_name_kana, presence: true, length: { in: 1..50 }, format: { with: /\p{katakana}/ }
+  validates :first_name_kana, presence: true, length: { in: 1..50 }, format: { with: /\p{katakana}/ }
+  validates :nickname, presence: true, length: { in: 1..15 }
+  validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+  validates :age, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 120, message: "は0から120までが登録できます" }
 
   def self.guest
     find_or_create_by!(nickname: 'ゲスト会員' ,email: 'guest@example.com') do |customer|

@@ -10,6 +10,10 @@
   </h5>
 </div>
 
+<div class="col">
+  <%= render "public/shared/error_messages", resource: @genre %>
+</div>
+
 <div class="col-lg-12 col-md-12 col-sm-12">
   <% if @genres.count >= 1 %>
     <table class="table">

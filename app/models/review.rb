@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   has_many :review_comments, dependent: :destroy
 
   validates :evaluation, presence: true
-  validates :text, presence: true
+  validates :title, presence: :true, length: { in: 1..20 }
+  validates :text, presence: true, length: { in: 1..255 }
 
 end
